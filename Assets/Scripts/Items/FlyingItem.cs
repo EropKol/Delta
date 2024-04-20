@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlyingItem : MonoBehaviour
 {
     public ItemObjectScript ItemPrefab;
-    public GameObject BoughtItem;
+    public GameObject ChosenItem;
 
     private Rigidbody _rigidBody;
     private Vector3 _startDirection;
@@ -14,7 +14,7 @@ public class FlyingItem : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
 
-        _startDirection = (Vector3.up * 3 + Vector3.forward) * 100;
+        _startDirection = (transform.up * 3 + transform.forward) * 120;
 
         _rigidBody.AddForce(_startDirection);
     }
@@ -26,7 +26,6 @@ public class FlyingItem : MonoBehaviour
         Destroy(gameObject);
 
         var ItemObject = Instantiate(ItemPrefab, transform.position, Quaternion.identity);
-        ItemObject.IsBought = true;
-        ItemObject.Item = BoughtItem;
+        ItemObject.Item = ChosenItem;
     }
 }

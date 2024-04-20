@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 616676459374118331}
   - component: {fileID: 3947563921843589420}
   - component: {fileID: 477312379546250368}
-  - component: {fileID: -4325525852623768199}
+  - component: {fileID: -9125854713874346189}
   m_Layer: 0
   m_Name: ItemObject
   m_TagString: Untagged
@@ -67,25 +67,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e278af4471d8307469ae83a9344f21e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pool:
-  - {fileID: 4528225661700019470, guid: ea3f55ce2943d4248a143f4debc312f8, type: 3}
-  IsBought: 0
   Item: {fileID: 0}
---- !u!114 &-4325525852623768199
-MonoBehaviour:
+--- !u!65 &-9125854713874346189
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4404551530168509610}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 5
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &1960888147427787481
 TrailRenderer:
@@ -56,7 +56,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,18 +81,27 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.9837193
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.14799835
-        value: 0.123808354
+        time: 0.00799942
+        value: 0.16190231
         inSlope: 0
         outSlope: 0
         tangentMode: 1
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.3052503
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.15725799
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2

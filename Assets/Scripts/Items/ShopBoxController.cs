@@ -34,15 +34,16 @@ public class ShopBoxController : MonoBehaviour
 
         if (Vector3.Angle(Player.transform.forward, DistanceToPlayer) < LookAngle && Vector3.Magnitude(DistanceToPlayer) < EffectLength)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Destroy(_item);
                 GetComponent<ShopBoxController>().enabled = false;
+                GetComponent<Outline>().enabled = false;
 
-                var FlyingItem = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
-                FlyingItem.BoughtItem = _itemPrefab; 
+                var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
+                FlyingItemObject.ChosenItem = _itemPrefab;
             }
-            _outline.OutlineWidth = 8;
+            _outline.OutlineWidth = 15;
         }
         else
         {
