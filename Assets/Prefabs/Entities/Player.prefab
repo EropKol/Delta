@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6444119063499646136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SkillsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720590034819618334}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 8204854428104202127}
   - component: {fileID: 5022870136858926267}
   - component: {fileID: 7988987584524040922}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 2690526304324437138}
   - component: {fileID: 4128348086274216380}
   - component: {fileID: 4004874165978711905}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: AimImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2955865293073647525}
   - component: {fileID: 9040259979415746136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 4823878508677351597}
   - component: {fileID: 1837896866549552447}
   - component: {fileID: 2638895567014696471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6525112434867013007}
   - component: {fileID: 2408926290661515661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShotSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,13 +427,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8858583076546749217}
   - component: {fileID: 205816187651086133}
-  - component: {fileID: 5934983705773736700}
   - component: {fileID: 5842329242038051208}
   - component: {fileID: 6235383071722377046}
   - component: {fileID: 7640941970638387980}
-  m_Layer: 0
+  - component: {fileID: 4718422040412443348}
+  - component: {fileID: 5934983705773736700}
+  m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,7 +457,7 @@ Transform:
   - {fileID: 6525112434867013007}
   - {fileID: 8274370456396500031}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &205816187651086133
 MonoBehaviour:
@@ -473,6 +474,89 @@ MonoBehaviour:
   GravityModifier: 1
   SpeedModifier: 1
   JumpModifier: 1
+  WalkingSpeed: 1
+  RunningSpeed: 1.75
+--- !u!114 &5842329242038051208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675915307076595296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad20ce429f200843a0c89b431c9321a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraHolder: {fileID: 5819153152025563237}
+  RotationSpeedY: 1
+  RotationSpeedX: 1
+  MinAngle: -40
+  MaxAngle: 40
+--- !u!114 &6235383071722377046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675915307076595296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e681024e831dcc4a889b074c34f0535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotPoint: {fileID: 6525112434867013007}
+  BulletPrefab: {fileID: -2551304460051296597, guid: 3b04ec668922fcd4e8dc341f4bdc6d33, type: 3}
+  SkillOne: {fileID: 7605350324876085849}
+  DamageModifier: 1
+  CritChancePl: 0.01
+  CritMultiplierPl: 2
+  RechargeTime: 1
+  ShotFlySpeedModifier: 1
+  ShotTimes: 1
+  XSpreadAngle: 0
+  YSpreadAngle: 0
+  ZSpreadAngle: 0
+--- !u!114 &7640941970638387980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675915307076595296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ea37ee76e05204288801cfd46ba6c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 100
+  IsDead: 0
+--- !u!114 &4718422040412443348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675915307076595296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d703794b1ef4d419569817a16f57ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemIDList: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  ItemNameList:
+  - {fileID: 0}
+  - {fileID: 7989721844523022206, guid: ea3f55ce2943d4248a143f4debc312f8, type: 3}
+  - {fileID: 7002198358459416580, guid: 18c4298662659eb4380cbfde2c15692c, type: 3}
+  - {fileID: 7002198358459416580, guid: e6335c3477f1ece4b8e03701c7e38c23, type: 3}
+  - {fileID: 7002198358459416580, guid: b24a7a322cd4aac4c8590bc16bd684f3, type: 3}
+  - {fileID: 7002198358459416580, guid: eb965f9d013e1e743aa22fa6ebc98bac, type: 3}
+  - {fileID: 7002198358459416580, guid: b8126f7ef6c9b5a48b8e92ac583ca2f2, type: 3}
+  - {fileID: 7002198358459416580, guid: 805207efef3d02c46a811974f09ab0d6, type: 3}
+  - {fileID: 7002198358459416580, guid: a259644c51799c5468e0b3c77fb85b39, type: 3}
+  - {fileID: 7002198358459416580, guid: a2352575588a0e14ab4c25d7c3099415, type: 3}
+  Bomb: {fileID: -2551304460051296597, guid: f9d7d1a266b7b2047819c4c89582a11d, type: 3}
+  Bullet: {fileID: -2551304460051296597, guid: 3b04ec668922fcd4e8dc341f4bdc6d33, type: 3}
 --- !u!143 &5934983705773736700
 CharacterController:
   m_ObjectHideFlags: 0
@@ -499,55 +583,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5842329242038051208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6675915307076595296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad20ce429f200843a0c89b431c9321a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraHolder: {fileID: 5819153152025563237}
-  RotationSpeedY: 1
-  RotationSpeedX: 1
-  MinAngle: -30
-  MaxAngle: 30
---- !u!114 &6235383071722377046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6675915307076595296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e681024e831dcc4a889b074c34f0535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShotPoint: {fileID: 6525112434867013007}
-  BulletPrefab: {fileID: -2551304460051296597, guid: 3b04ec668922fcd4e8dc341f4bdc6d33, type: 3}
-  SkillOne: {fileID: 7605350324876085849}
-  DamageModifier: 1
-  RechargeTime: 1
-  ShotFlySpeedModifier: 1
---- !u!114 &7640941970638387980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6675915307076595296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ea37ee76e05204288801cfd46ba6c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthPoints: 100
-  IsDead: 0
 --- !u!1 &6785428040070611620
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +594,7 @@ GameObject:
   - component: {fileID: 4778594124587830542}
   - component: {fileID: 4757127837501664022}
   - component: {fileID: 2066468883715577830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2243541428652117621}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: AimUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +705,7 @@ GameObject:
   - component: {fileID: 6767935645531975576}
   - component: {fileID: 6436762845265685446}
   - component: {fileID: 4774934199919557706}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +811,7 @@ GameObject:
   - component: {fileID: 3243834834133234177}
   - component: {fileID: 4958195499050293019}
   - component: {fileID: 7605350324876085849}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +887,7 @@ GameObject:
   - component: {fileID: 1284088350299546284}
   - component: {fileID: 4222250729811139034}
   - component: {fileID: 2883779282365579251}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -942,7 +977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3584663824964630442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -981,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5819153152025563237}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

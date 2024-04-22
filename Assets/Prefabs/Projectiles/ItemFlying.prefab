@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2731222947140745399}
   - component: {fileID: 1652156342994585790}
   - component: {fileID: 6802424873183737754}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ItemFlying
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 477312379546250368, guid: 27d408f779d6117479ba149917cf2a63, type: 3}
-  BoughtItem: {fileID: 0}
+  ChosenItem: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!54 &1652156342994585790
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,7 +182,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1

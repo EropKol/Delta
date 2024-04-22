@@ -23,9 +23,11 @@ public class ShopBoxController : MonoBehaviour
 
         _itemPrefab = ShopPool[Random.Range(0, ShopPool.Count)];
 
-        _item = Instantiate(_itemPrefab, transform.position + 1.5f * Vector3.up, transform.rotation, transform);
+        _item = Instantiate(_itemPrefab, transform.position + 1.5f * Vector3.up, transform.rotation, gameObject.transform);
 
         _item.transform.localScale = new Vector3(ObjectScale, ObjectScale, ObjectScale);
+
+        _item.GetComponent<ItemEffect>().Player = Player;
     }
 
     private void Update()
@@ -42,6 +44,7 @@ public class ShopBoxController : MonoBehaviour
 
                 var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
                 FlyingItemObject.ChosenItem = _itemPrefab;
+                FlyingItemObject.Player = Player;
             }
             _outline.OutlineWidth = 15;
         }

@@ -6,6 +6,7 @@ public class FlyingItem : MonoBehaviour
 {
     public ItemObjectScript ItemPrefab;
     public GameObject ChosenItem;
+    public PlayerController Player;
 
     private Rigidbody _rigidBody;
     private Vector3 _startDirection;
@@ -21,11 +22,10 @@ public class FlyingItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
-
         Destroy(gameObject);
 
         var ItemObject = Instantiate(ItemPrefab, transform.position, Quaternion.identity);
         ItemObject.Item = ChosenItem;
+        ItemObject.Player = Player;
     }
 }

@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
     public float GravityModifier = 1f;
     public float SpeedModifier = 1;
     public float JumpModifier = 1;
+    public float WalkingSpeed = 1;
+    public float RunningSpeed = 1.75f;
 
     private float _fallVelocity = 0;
-    private float PlayerSpeed = 1;
-    private float RunningSpeed = 1.75f;
 
     private Vector3 _moveVector;
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            _charCont.Move(_moveVector * PlayerSpeed * 15 * SpeedModifier  * Time.fixedDeltaTime);
+            _charCont.Move(_moveVector * WalkingSpeed * 15 * SpeedModifier * Time.fixedDeltaTime);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
