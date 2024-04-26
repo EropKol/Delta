@@ -37,7 +37,7 @@ public class WeaponController : MonoBehaviour
                     Spread = Quaternion.Euler(XSpreadAngle * (4 * i / ShotTimes - 1), YSpreadAngle * (4 * i / ShotTimes - 1), ZSpreadAngle * (4 * i / ShotTimes - 1));
                 }
 
-                var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, BulletPrefab.transform.rotation * ShotPoint.rotation * Spread);
+                var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, ShotPoint.rotation * Spread);
 
                 BulletObject.Damage = DamageModifier * 10 * Random.Range(0.8f, 1.2f);
                 BulletObject.ShotFlySpeed *= ShotFlySpeedModifier * Random.Range(0.5f, 1.5f);

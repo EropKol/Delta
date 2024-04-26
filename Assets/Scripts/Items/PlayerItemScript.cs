@@ -83,7 +83,7 @@ public class PlayerItemScript : MonoBehaviour
 
         if (ItemIDList[8] > 0) // 8 TriHat (Red)
         {
-            _weapon.YSpreadAngle = 0.2f + 0.1f* ItemIDList[8] / (ItemIDList[8] + 1);
+            _weapon.YSpreadAngle = 100 * (0.2f + 0.1f * ItemIDList[8] / (ItemIDList[8] + 1));
             _weapon.ShotTimes = 1 + 1 * ItemIDList[8];
         }
 
@@ -123,6 +123,4 @@ public class PlayerItemScript : MonoBehaviour
             }
         }
     }
-
-    
 }

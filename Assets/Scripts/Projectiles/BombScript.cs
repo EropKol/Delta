@@ -5,6 +5,9 @@ using UnityEngine;
 public class BombScript : MonoBehaviour
 {
     public float TimeToExplode;
+    public float ExplosionDamage;
+
+    public GameObject Zone;
 
     private void Start()
     {
@@ -14,5 +17,8 @@ public class BombScript : MonoBehaviour
     void Explode()
     {
         Destroy(gameObject);
+
+        var zone = Instantiate(Zone, transform.position, Quaternion.identity);
+        zone.GetComponent<ZoneScript>().ExplosionDamage = ExplosionDamage;
     }
 }

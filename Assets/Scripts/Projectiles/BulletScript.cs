@@ -9,12 +9,13 @@ public class BulletScript : MonoBehaviour
     public float CritChance = 1;
     public float CritMultiplier = 1;
     public float ShotFlySpeed = 1;
+    public float TurnUp = 0;
 
     private void Start()
     {
         Invoke("BulletDie", 15);
 
-        GetComponent<Rigidbody>().AddForce(transform.forward * 100 * ShotFlySpeed);
+        GetComponent<Rigidbody>().AddForce(transform.forward * 100 * ShotFlySpeed + transform.up * 100 * TurnUp);
     }
 
     private void OnTriggerEnter(Collider other)
