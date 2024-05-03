@@ -20,37 +20,75 @@ public class WeaponController : MonoBehaviour
     public float YSpreadAngle = 0;
     public float ZSpreadAngle = 0;
 
+    public bool IsHoming = false;
+    public float HomingSpeed = 0.5f;
+    public float HomingRadius = 0.5f;
+
     private float _rechargeTimer = 0;
     private Quaternion Spread =  Quaternion.Euler(0, 0, 0);
 
+    public bool IsDeathEffect = false;
+
     private void Update()
     {
-        SkillOne.fillAmount = 1 - _rechargeTimer / (RechargeTime);
+        ShotUpdate();
 
+        RechargeTimerUpdate();
+
+        ShotSkillUIUpdate();
+    }
+
+    void ShotUpdate()
+    {
         if (Input.GetKey(KeyCode.Mouse0) && _rechargeTimer <= 0)
         {
-            
-            for(int i = 0; i < ShotTimes; i++)
+
+            for (int i = 0; i < ShotTimes; i++)
             {
                 if (ShotTimes > 1)
                 {
                     Spread = Quaternion.Euler(XSpreadAngle * (4 * i / ShotTimes - 1), YSpreadAngle * (4 * i / ShotTimes - 1), ZSpreadAngle * (4 * i / ShotTimes - 1));
                 }
 
-                var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, ShotPoint.rotation * Spread);
-
-                BulletObject.Damage = DamageModifier * 10 * Random.Range(0.8f, 1.2f);
-                BulletObject.ShotFlySpeed *= ShotFlySpeedModifier * Random.Range(0.5f, 1.5f);
-                BulletObject.CritChance *= CritChancePl;
-                BulletObject.CritMultiplier *= CritMultiplierPl;
+                SpawnBullet();
             }
 
             _rechargeTimer = RechargeTime;
         }
+    }
 
-        if(_rechargeTimer > 0)
+    void RechargeTimerUpdate()
+    {
+        if (_rechargeTimer > 0)
         {
             _rechargeTimer -= Time.deltaTime;
+        }
+    }
+
+    void ShotSkillUIUpdate()
+    {
+        SkillOne.fillAmount = 1 - _rechargeTimer / (RechargeTime);
+    }
+
+    void SpawnBullet()
+    {
+        var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, ShotPoint.rotation * Spread);
+
+        BulletObject.Damage = DamageModifier * 10 * Random.Range(0.8f, 1.2f);
+        BulletObject.ShotFlySpeed *= ShotFlySpeedModifier * Random.Range(0.5f, 1.5f);
+        BulletObject.CritChance *= CritChancePl;
+        BulletObject.CritMultiplier *= CritMultiplierPl;
+
+        if (IsDeathEffect)
+        {
+            BulletObject.IsDeathEffect = true;
+        }
+
+        if (IsHoming)
+        {
+            BulletObject.IsHoming = true;
+            BulletObject.HomingSpeed = HomingSpeed;
+            BulletObject.HomingRadius = HomingRadius;
         }
     }
 }

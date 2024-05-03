@@ -26,25 +26,9 @@ public class ZoneScript : MonoBehaviour
 
     private void Update()
     {
-        if (_timeToEnd > 0)
-        {
-            _timeToEnd -= Time.deltaTime;
-        }
+        EffectTimer();
 
-        if (_timeToEnd < 0)
-        {
-            _active = false;
-        }
-
-
-        _timeToFade -= Time.deltaTime;
-
-        _renderer.material.color = new Color(1, 1, 1, 0.28f * _timeToFade);
-
-        if(_timeToFade < 0)
-        {
-            Destroy(gameObject);
-        }
+        VisualTimer();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,6 +48,31 @@ public class ZoneScript : MonoBehaviour
                     health.Burning(BurnTime);
                 }
             }
+        }
+    }
+
+    void EffectTimer()
+    {
+        if (_timeToEnd > 0)
+        {
+            _timeToEnd -= Time.deltaTime;
+        }
+
+        if (_timeToEnd < 0)
+        {
+            _active = false;
+        }
+    }
+
+    void VisualTimer()
+    {
+        _timeToFade -= Time.deltaTime;
+
+        _renderer.material.color = new Color(1, 1, 1, 0.28f * _timeToFade);
+
+        if (_timeToFade < 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

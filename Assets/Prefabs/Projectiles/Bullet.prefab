@@ -52,7 +52,13 @@ MonoBehaviour:
   Damage: 1
   CritChance: 1
   CritMultiplier: 1
-  ShotFlySpeed: 10
+  ShotFlySpeed: 50
+  TurnUp: 0
+  IsHoming: 0
+  HomingSpeed: 0.5
+  HomingRadius: 0.5
+  HomingZoneObject: {fileID: -8118671936194233052, guid: 29041a4559d00ce4e87a391737791077, type: 3}
+  IsDeathEffect: 0
 --- !u!33 &4193327304157323825
 MeshFilter:
   m_ObjectHideFlags: 0

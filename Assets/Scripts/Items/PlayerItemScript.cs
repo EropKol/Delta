@@ -21,6 +21,7 @@ public class PlayerItemScript : MonoBehaviour
     private PlayerController _player;
     private WeaponController _weapon;
     private DodgeScript _dodgeScript;
+    private HealthScript _health;
 
     private float ItemDropperCounter10 = 0;
     private float ItemDropperCounter11 = 0;
@@ -32,6 +33,8 @@ public class PlayerItemScript : MonoBehaviour
         _weapon = GetComponent<WeaponController>();
 
         _dodgeScript = GetComponent<DodgeScript>();
+
+        _health = GetComponent<HealthScript>();
     }
 
     private void Update()
@@ -61,9 +64,9 @@ public class PlayerItemScript : MonoBehaviour
 
         // Speed
 
-        _player.WalkingSpeed = 1 + Mathf.Pow(1.1f, ItemIDList[4]);  // 4 Black Shoes (White)
+        _player.WalkingSpeed = 1 * Mathf.Pow(1.1f, ItemIDList[4]);  // 4 Black Shoes (White)
 
-        _player.RunningSpeed = 1.75f + Mathf.Pow(1.15f, ItemIDList[5]); // 5 White Shoes (White)
+        _player.RunningSpeed = 1.75f * Mathf.Pow(1.15f, ItemIDList[5]); // 5 White Shoes (White)
 
         // Projectile Change
 
@@ -79,15 +82,33 @@ public class PlayerItemScript : MonoBehaviour
             _weapon.BulletPrefab = Bullet;
         }
 
+        if (ItemIDList[14] > 0) // 14 Black Eye (Red)
+        {
+            _weapon.IsHoming = true;
+
+            _weapon.HomingSpeed = 0.25f + 0.25f * ItemIDList[14];
+            _weapon.HomingRadius = 0.4f + 0.1f * ItemIDList[14];
+        }
+        else
+        {
+            _weapon.IsHoming = false;
+        }
+
         // Spread
 
         if (ItemIDList[8] > 0) // 8 TriHat (Red)
         {
-            _weapon.YSpreadAngle = 100 * (0.2f + 0.1f * ItemIDList[8] / (ItemIDList[8] + 1));
+            _weapon.YSpreadAngle = 100 * (0.3f + 0.1f * ItemIDList[8] / (ItemIDList[8] + 1));
             _weapon.ShotTimes = 1 + 1 * ItemIDList[8];
         }
 
         // DeathEffects
+
+        if (ItemIDList[12] > 0) // 12 Gasoline (White)
+        {
+            _weapon.IsDeathEffect = true;
+
+        }
 
         // Misc
 
@@ -103,6 +124,7 @@ public class PlayerItemScript : MonoBehaviour
                 var itemObject = Instantiate(FlyingItemPrefab, transform.position, transform.rotation * CurrentAngle);
 
                 itemObject.ChosenItem = Pool10[Random.Range(0, Pool10.Count)];
+                itemObject.Player = _player;
             }
 
             ItemIDList[10]--;
@@ -122,5 +144,7 @@ public class PlayerItemScript : MonoBehaviour
                 itemObject.Player = _player;
             }
         }
+
+        _health.HealthRegen = 0.5f + 0.25f * ItemIDList[13]; // 13 Bread (Green)
     }
 }
