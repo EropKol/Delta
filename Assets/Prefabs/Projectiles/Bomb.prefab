@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1580073153081691717}
   m_Layer: 3
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +54,11 @@ MonoBehaviour:
   CritMultiplier: 1
   ShotFlySpeed: 3
   TurnUp: 3
+  IsHoming: 0
+  HomingSpeed: 0.5
+  HomingRadius: 0.5
+  HomingZoneObject: {fileID: 0}
+  IsDeathEffect: 0
 --- !u!114 &-5677913030951784228
 MonoBehaviour:
   m_ObjectHideFlags: 0

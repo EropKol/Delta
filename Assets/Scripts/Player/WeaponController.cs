@@ -47,7 +47,7 @@ public class WeaponController : MonoBehaviour
             {
                 if (ShotTimes > 1)
                 {
-                    Spread = Quaternion.Euler(XSpreadAngle * (4 * i / ShotTimes - 1), YSpreadAngle * (4 * i / ShotTimes - 1), ZSpreadAngle * (4 * i / ShotTimes - 1));
+                    Spread = Quaternion.Euler(XSpreadAngle * (2 * i / (ShotTimes - 1) - 1), YSpreadAngle * (2 * i / (ShotTimes - 1) - 1), ZSpreadAngle * (2 * i / (ShotTimes - 1) - 1));
                 }
 
                 SpawnBullet();

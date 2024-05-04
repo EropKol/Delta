@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1463165000468495423}
   - component: {fileID: 3594694396390955334}
   m_Layer: 0
-  m_Name: Box
-  m_TagString: Untagged
+  m_Name: ShopCommon
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 2373894173466693769}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1463165000468495423
 MonoBehaviour:
@@ -82,9 +82,9 @@ MonoBehaviour:
   - {fileID: 4528225661700019470, guid: a259644c51799c5468e0b3c77fb85b39, type: 3}
   - {fileID: 4528225661700019470, guid: f93b1666707317a40aae156e5cbd61a9, type: 3}
   - {fileID: 4528225661700019470, guid: cd6723c8f9095f14a9776e06fae51ea0, type: 3}
-  WhiteChance: 34
-  GreenChance: 33
-  RedChance: 33
+  WhiteChance: 90
+  GreenChance: 10
+  RedChance: 1
   FlyingItemPrefab: {fileID: 2731222947140745399, guid: 5bc1c138e864724418224a54246c46bf, type: 3}
   EffectLength: 3
   LookAngle: 20
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5539174994738550683}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

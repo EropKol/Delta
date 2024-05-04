@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8118671936194233052}
   m_Layer: 0
   m_Name: HomingZone
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,3 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b188cc7b8ff6de449a52a619fbe6795c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletObject: {fileID: 0}

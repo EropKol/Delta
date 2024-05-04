@@ -9,15 +9,16 @@ public class HomingScript : MonoBehaviour
     private Vector3 Direction;
 
     private List<GameObject> Targets;
-    private EnemyAI _enemyAI;
 
     private void Start()
     {
-        Targets.Add(gameObject);
+        Targets = new List<GameObject>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        transform.position = BulletObject.transform.position;
+
         foreach (var target in Targets)
         {
             if (target != gameObject)
@@ -26,20 +27,22 @@ public class HomingScript : MonoBehaviour
 
                 BulletObject.HomingDirection(Direction);
             }
-            }
+        }
+    }
+
+    private void Update()
+    {
+        if (BulletObject == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.TryGetComponent<EnemyAI>(out _enemyAI);
-        if (_enemyAI != null)
+        if (other.tag == "Enemy")
         {
             Targets.Add(other.gameObject);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Targets.Remove(other.gameObject);
     }
 }

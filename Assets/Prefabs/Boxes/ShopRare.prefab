@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1463165000468495423}
   - component: {fileID: 3594694396390955334}
   m_Layer: 0
-  m_Name: Box
-  m_TagString: Untagged
+  m_Name: ShopRare
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 2373894173466693769}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1463165000468495423
 MonoBehaviour:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 1, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.5058824, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
@@ -75,16 +75,16 @@ MonoBehaviour:
   - {fileID: 4528225661700019470, guid: e6335c3477f1ece4b8e03701c7e38c23, type: 3}
   - {fileID: 4528225661700019470, guid: 805207efef3d02c46a811974f09ab0d6, type: 3}
   - {fileID: 4528225661700019470, guid: c01cee593b3b86848b4ef8f1d5fc3232, type: 3}
-  - {fileID: 4528225661700019470, guid: a7c59fa7108b7f74b8ab9c1feb497c69, type: 3}
   - {fileID: 4528225661700019470, guid: 744f4d051ed15bc45a4b646d1f05922b, type: 3}
+  - {fileID: 4528225661700019470, guid: a7c59fa7108b7f74b8ab9c1feb497c69, type: 3}
   ShopPoolRed:
   - {fileID: 4528225661700019470, guid: 18c4298662659eb4380cbfde2c15692c, type: 3}
   - {fileID: 4528225661700019470, guid: a259644c51799c5468e0b3c77fb85b39, type: 3}
   - {fileID: 4528225661700019470, guid: f93b1666707317a40aae156e5cbd61a9, type: 3}
   - {fileID: 4528225661700019470, guid: cd6723c8f9095f14a9776e06fae51ea0, type: 3}
-  WhiteChance: 34
-  GreenChance: 33
-  RedChance: 33
+  WhiteChance: 0
+  GreenChance: 90
+  RedChance: 10
   FlyingItemPrefab: {fileID: 2731222947140745399, guid: 5bc1c138e864724418224a54246c46bf, type: 3}
   EffectLength: 3
   LookAngle: 20
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 5539174994738550683}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2540298408717256595}
   m_Layer: 3
   m_Name: DeathEffectZone
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,5 +122,3 @@ MonoBehaviour:
   Size: 7.5
   Mode: 1
   BurnTime: 0
-  TimeToEnd: 0.1
-  TimeToFade: 1

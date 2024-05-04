@@ -19,6 +19,7 @@ public class BulletScript : MonoBehaviour
     public bool IsDeathEffect = false;
 
     private Rigidbody _rigidBody;
+    private HomingScript _homingZone;
 
     private void Start()
     {
@@ -30,9 +31,9 @@ public class BulletScript : MonoBehaviour
 
         if (IsHoming)
         {
-            var homingZone = Instantiate(HomingZoneObject, transform);
-            homingZone.GetComponent<SphereCollider>().radius = HomingRadius;
-            homingZone.BulletObject = gameObject.GetComponent<BulletScript>();
+            _homingZone = Instantiate(HomingZoneObject, transform.position, Quaternion.identity);
+            _homingZone.GetComponent<SphereCollider>().radius = HomingRadius;
+            _homingZone.BulletObject = gameObject.GetComponent<BulletScript>();
         }
     }
 
@@ -43,20 +44,23 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        BulletDie();
-
-        var DodgeScript = other.GetComponent<DodgeScript>();
-
-        if (DodgeScript != null)
+        if (other.gameObject.tag != "Bullet")
         {
-            if (Random.Range(0, 100) > DodgeScript.DodgeChance)
+            BulletDie();
+
+            var DodgeScript = other.GetComponent<DodgeScript>();
+
+            if (DodgeScript != null)
+            {
+                if (Random.Range(0, 100) > DodgeScript.DodgeChance)
+                {
+                    DealDamage(other);
+                }
+            }
+            else
             {
                 DealDamage(other);
             }
-        }
-        else
-        {
-            DealDamage(other);
         }
     }
 

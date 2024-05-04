@@ -22,7 +22,7 @@ public class EnemyShootScript : MonoBehaviour
     {
         if (_timer <= 0)
         {
-            Instantiate(Bullet, BulletSourse.position, direction);
+            var bullet = Instantiate(Bullet, BulletSourse.position, direction);
 
             _timer = RechargeTimer;
         }
