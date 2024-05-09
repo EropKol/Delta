@@ -10,6 +10,8 @@ public class ShopBoxController : MonoBehaviour
     public List<GameObject> ShopPoolGreen;
     public List<GameObject> ShopPoolRed;
 
+    public float ItemCost = 20;
+
     public float WhiteChance = 90;
     public float GreenChance = 10;
     public float RedChance = 1;
@@ -27,10 +29,14 @@ public class ShopBoxController : MonoBehaviour
     private GameObject _item;
     private GameObject _itemPrefab;
 
+    private MoneyScript _moneyScript;
+
     private BuyUI _playerUIScript;
 
     private void Start()
     {
+        _moneyScript = Player.GetComponent<MoneyScript>();
+
         _outline = GetComponent<Outline>();
 
         RandomNumber = Random.Range(0, 1000);
@@ -49,7 +55,7 @@ public class ShopBoxController : MonoBehaviour
             }
             else
             {
-                    _itemPrefab = ShopPoolRed[Random.Range(0, ShopPoolRed.Count)]; // <= 10
+                _itemPrefab = ShopPoolRed[Random.Range(0, ShopPoolRed.Count)]; // <= 10
             }
         }
 
@@ -62,26 +68,31 @@ public class ShopBoxController : MonoBehaviour
 
     private void Update()
     {
-        var DistanceToPlayer = transform.position - Player.transform.position;
-
-        if (Vector3.Angle(Player.transform.forward, DistanceToPlayer) < LookAngle && Vector3.Magnitude(DistanceToPlayer) < EffectLength)
+        if (_moneyScript.PlayersMoney >= ItemCost)
         {
+            var DistanceToPlayer = transform.position - Player.transform.position;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Vector3.Angle(Player.transform.forward, DistanceToPlayer) < LookAngle && Vector3.Magnitude(DistanceToPlayer) < EffectLength)
             {
-                Destroy(_item);
-                GetComponent<ShopBoxController>().enabled = false;
-                GetComponent<Outline>().enabled = false;
 
-                var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
-                FlyingItemObject.ChosenItem = _itemPrefab;
-                FlyingItemObject.Player = Player;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Destroy(_item);
+
+                    _moneyScript.PlayersMoney -= ItemCost;
+
+                    Start();
+
+                    var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
+                    FlyingItemObject.ChosenItem = _itemPrefab;
+                    FlyingItemObject.Player = Player;
+                }
+                _outline.OutlineWidth = 15;
             }
-            _outline.OutlineWidth = 15;
-        }
-        else
-        {
-            _outline.OutlineWidth = 2;
+            else
+            {
+                _outline.OutlineWidth = 2;
+            }
         }
     }
 }

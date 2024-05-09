@@ -15,7 +15,7 @@ public class FlyingItem : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
 
-        _startDirection = (transform.up * 3 + transform.forward) * 120;
+        _startDirection = (transform.up * 3 + transform.forward) * 150;
 
         _rigidBody.AddForce(_startDirection);
     }
