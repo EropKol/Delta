@@ -11,14 +11,17 @@ public class EnemyAI : MonoBehaviour
     public List<Transform> PatrolPoints;
     public float ViewAngle;
 
-    public PlayerController Player;
+    private PlayerController _player;
     private bool _playerNoticed;
+    private Vector3 _direction;
 
     private NavMeshAgent _navMeshAgent;
     private EnemyShootScript _ShootScript;
 
     private void Start()
     {
+        _player = FindObjectOfType<PlayerController>();
+
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         _ShootScript = GetComponent<EnemyShootScript>();
@@ -35,7 +38,7 @@ public class EnemyAI : MonoBehaviour
 
     void PatrolUpdate()
     {
-        if(_playerNoticed == false)
+        if (_playerNoticed == false)
         {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
@@ -44,9 +47,18 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            _navMeshAgent.destination = Player.transform.position;
+            if (_navMeshAgent.remainingDistance >= _navMeshAgent.stoppingDistance)
+            {
+                _navMeshAgent.destination = _player.transform.position;
+            }
+            else
+            {
+                _navMeshAgent.destination = -_direction.normalized * _navMeshAgent.stoppingDistance + _player.transform.position;
 
-            if(EnemyType == 2)
+                transform.LookAt(_player.transform);
+            }
+
+            if (EnemyType == 2)
             {
                 _ShootScript.Shoot(transform.rotation);
             }
@@ -62,13 +74,13 @@ public class EnemyAI : MonoBehaviour
     {
         _playerNoticed = false;
 
-        var direction = Player.transform.position - transform.position;
-        if (Vector3.Angle(transform.forward, direction) < ViewAngle)
+        _direction = _player.transform.position - transform.position;
+        if (Vector3.Angle(transform.forward, _direction) < ViewAngle)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position + transform.up, direction, out hit))
+            if (Physics.Raycast(transform.position + transform.up, _direction, out hit))
             {
-                if (hit.collider.gameObject == Player.gameObject)
+                if (hit.collider.gameObject == _player.gameObject)
                 {
                     _playerNoticed = true;
 

@@ -10,16 +10,9 @@ public class BulletScript : MonoBehaviour
     public float ShotFlySpeed = 1;
     public float TurnUp = 0;
 
-    public bool IsHoming = false;
-    public float HomingSpeed = 0.5f;
-    public float HomingRadius = 0.5f;
-
-    public HomingScript HomingZoneObject;
-
     public bool IsDeathEffect = false;
 
     private Rigidbody _rigidBody;
-    private HomingScript _homingZone;
 
     private void Start()
     {
@@ -29,17 +22,6 @@ public class BulletScript : MonoBehaviour
 
         _rigidBody.AddForce(transform.forward * 100 * ShotFlySpeed + transform.up * 100 * TurnUp);
 
-        if (IsHoming)
-        {
-            _homingZone = Instantiate(HomingZoneObject, transform.position, Quaternion.identity);
-            _homingZone.GetComponent<SphereCollider>().radius = HomingRadius;
-            _homingZone.BulletObject = gameObject.GetComponent<BulletScript>();
-        }
-    }
-
-    public void HomingDirection(Vector3 Direction)
-    {
-        _rigidBody.AddForce(Direction * HomingSpeed);
     }
 
     private void OnTriggerEnter(Collider other)

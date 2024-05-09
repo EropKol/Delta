@@ -1,30 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
-    public RectTransform SettingsUI;
+    public Animator AnimatorController;
     private bool SettingsOpened;
-
-    private void FixedUpdate()
-    {
-        if (SettingsOpened)
-        {
-            if(SettingsUI.anchoredPosition.x > 500)
-            {
-                SettingsUI.anchoredPosition = new Vector2(SettingsUI.anchoredPosition.x - 200, 0);
-            }
-        }
-        else
-        {
-            if (SettingsUI.anchoredPosition.x < 1400)
-            {
-                SettingsUI.anchoredPosition = new Vector2(SettingsUI.anchoredPosition.x + 200, 0);
-            }
-        }
-    }
 
     public void StartGame()
     {
@@ -36,10 +16,12 @@ public class MenuButtons : MonoBehaviour
         if (SettingsOpened)
         {
             SettingsOpened = false;
+            AnimatorController.SetBool("IsOpened", false);
         }
         else
         {
             SettingsOpened = true;
+            AnimatorController.SetBool("IsOpened", true);
         }
     }
 

@@ -82,17 +82,8 @@ public class PlayerItemScript : MonoBehaviour
             _weapon.BulletPrefab = Bullet;
         }
 
-        if (ItemIDList[14] > 0) // 14 Black Eye (Red)
-        {
-            _weapon.IsHoming = true;
-
-            _weapon.HomingSpeed = 0.25f + 0.25f * ItemIDList[14];
-            _weapon.HomingRadius = 0.4f + 0.1f * ItemIDList[14];
-        }
-        else
-        {
-            _weapon.IsHoming = false;
-        }
+        _player.JumpModifier = 1 + Mathf.Pow(1.3f, ItemIDList[14]); // 14 Green Shoes (Green)
+        
 
         // Spread
 
@@ -124,7 +115,6 @@ public class PlayerItemScript : MonoBehaviour
                 var itemObject = Instantiate(FlyingItemPrefab, transform.position, transform.rotation * CurrentAngle);
 
                 itemObject.ChosenItem = Pool10[Random.Range(0, Pool10.Count)];
-                itemObject.Player = _player;
             }
 
             ItemIDList[10]--;
@@ -141,7 +131,6 @@ public class PlayerItemScript : MonoBehaviour
                 var itemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation * CurrentAngle);
 
                 itemObject.ChosenItem = Pool11[Random.Range(0, Pool11.Count)];
-                itemObject.Player = _player;
             }
         }
 

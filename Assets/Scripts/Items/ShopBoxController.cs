@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ShopBoxController : MonoBehaviour
 {
-    public PlayerController Player;
     public List<GameObject> ShopPoolWhite;
     public List<GameObject> ShopPoolGreen;
     public List<GameObject> ShopPoolRed;
@@ -25,23 +26,25 @@ public class ShopBoxController : MonoBehaviour
 
     private float RandomNumber;
 
+    public TextMeshProUGUI _UIText;
+
     private Outline _outline;
     private GameObject _item;
     private GameObject _itemPrefab;
 
     private MoneyScript _moneyScript;
 
-    private BuyUI _playerUIScript;
+    private PlayerController _player;
 
     private void Start()
     {
-        _moneyScript = Player.GetComponent<MoneyScript>();
+        _player = FindObjectOfType<PlayerController>();
+
+        _moneyScript = _player.GetComponent<MoneyScript>();
 
         _outline = GetComponent<Outline>();
 
         RandomNumber = Random.Range(0, 1000);
-
-        _playerUIScript = Player.GetComponent<BuyUI>();
 
         if (RandomNumber > 1000 - WhiteChance * 10) // > 100
         {
@@ -63,16 +66,16 @@ public class ShopBoxController : MonoBehaviour
 
         _item.transform.localScale = new Vector3(ObjectScale, ObjectScale, ObjectScale);
 
-        _item.GetComponent<ItemEffect>().Player = Player;
+        _UIText.text = "$ " + ItemCost;
     }
 
     private void Update()
     {
         if (_moneyScript.PlayersMoney >= ItemCost)
         {
-            var DistanceToPlayer = transform.position - Player.transform.position;
+            var DistanceToPlayer = transform.position - _player.transform.position;
 
-            if (Vector3.Angle(Player.transform.forward, DistanceToPlayer) < LookAngle && Vector3.Magnitude(DistanceToPlayer) < EffectLength)
+            if (Vector3.Angle(_player.transform.forward, DistanceToPlayer) < LookAngle && Vector3.Magnitude(DistanceToPlayer) < EffectLength)
             {
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -81,11 +84,12 @@ public class ShopBoxController : MonoBehaviour
 
                     _moneyScript.PlayersMoney -= ItemCost;
 
+                    ItemCost *= 2;
+
                     Start();
 
                     var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
                     FlyingItemObject.ChosenItem = _itemPrefab;
-                    FlyingItemObject.Player = Player;
                 }
                 _outline.OutlineWidth = 15;
             }
@@ -93,6 +97,10 @@ public class ShopBoxController : MonoBehaviour
             {
                 _outline.OutlineWidth = 2;
             }
+        }
+        else
+        {
+            _outline.OutlineWidth = 2;
         }
     }
 }

@@ -20,10 +20,6 @@ public class WeaponController : MonoBehaviour
     public float YSpreadAngle = 0;
     public float ZSpreadAngle = 0;
 
-    public bool IsHoming = false;
-    public float HomingSpeed = 0.5f;
-    public float HomingRadius = 0.5f;
-
     private float _rechargeTimer = 0;
     private Quaternion Spread =  Quaternion.Euler(0, 0, 0);
 
@@ -82,13 +78,6 @@ public class WeaponController : MonoBehaviour
         if (IsDeathEffect)
         {
             BulletObject.IsDeathEffect = true;
-        }
-
-        if (IsHoming)
-        {
-            BulletObject.IsHoming = true;
-            BulletObject.HomingSpeed = HomingSpeed;
-            BulletObject.HomingRadius = HomingRadius;
         }
     }
 }
