@@ -9,12 +9,18 @@ public class TrainToTunnel : MonoBehaviour
     public ToNextLevel NextLevelScript;
     public Transform World;
     public GameObject TrainGoOut1;
+    public bool GoingOut2;
 
     private float _speed = 0.1f;
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(GoOut());
+        if (GoingOut2 == false)
+        {
+            StartCoroutine(GoOut());
+
+            GoingOut2 = true;
+        }
     }
 
     private IEnumerator GoOut()
@@ -26,9 +32,8 @@ public class TrainToTunnel : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
 
-        StartCoroutine(NextLevelScript.LoadScene());
+        StartCoroutine(NextLevelScript.LoadScene(3, gameObject));
 
         TrainGoOut1.SetActive(true);
-        gameObject.SetActive(false);
     }
 }

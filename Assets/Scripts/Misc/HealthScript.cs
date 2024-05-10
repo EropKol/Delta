@@ -11,22 +11,45 @@ public class HealthScript : MonoBehaviour
 
     public float BurningTimer;
 
+    public Animator Animator;
+    public float DeathCost = 20;
+
     public ZoneScript ZoneEffect;
+
+    private EnemyAI _AI;
+
+    private MoneyScript _playersMoney;
+
+    private float _timerMax = 3;
+    private float _timer;
 
     private void Start()
     {
+        _AI = GetComponent<EnemyAI>();
+
+        _playersMoney = FindObjectOfType<MoneyScript>();
+
         HealthPoints = MaxHealthPoints;
     }
 
     public void DealDamage(float DamageDealt, bool IsDeathEffect = false)
     {
+        if (_AI != null)
+        {
+            _AI.PlayerNoticed = true;
+        }
+
         HealthPoints -= DamageDealt;
 
-        if (HealthPoints < 0)
+        if (HealthPoints <= 0)
         {
+            _playersMoney.PlayersMoney += DeathCost;
             HealthPoints = 0;
 
             IsDead = true;
+            Animator.SetBool("IsDead", true);
+            Invoke("Destroy", 1);
+
 
             if (IsDeathEffect)
             {
@@ -38,20 +61,42 @@ public class HealthScript : MonoBehaviour
 
     private void Update()
     {
-        HealthPoints += HealthRegen * Time.deltaTime;
-        HealthPoints = Mathf.Clamp(HealthPoints, 0, MaxHealthPoints);
+        _timer -= Time.deltaTime;
 
-        if (BurningTimer > 0)
+        if (_timer <= 0)
         {
-            BurningTimer -= Time.deltaTime;
+            _timer = _timerMax;
 
-            HealthPoints -= 15 * Time.deltaTime;
+            HealthPoints += HealthRegen;
+            HealthPoints = Mathf.Clamp(HealthPoints, 0, MaxHealthPoints);
+
+            if (BurningTimer > 0)
+            {
+                BurningTimer -= Time.deltaTime;
+
+                HealthPoints -= 15 * Time.deltaTime;
+            }
+
+            if (HealthPoints == 0)
+            {
+                DealDamage(0);
+            }
         }
+
+        HealthPoints = Mathf.Round(HealthPoints);
     }
 
     public void Burning(float PlusTime)
     {
         BurningTimer += PlusTime;
 
+    }
+
+    void Destroy()
+    {
+        if (gameObject.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

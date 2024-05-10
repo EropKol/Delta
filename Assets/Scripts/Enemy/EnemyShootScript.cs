@@ -23,6 +23,11 @@ public class EnemyShootScript : MonoBehaviour
         if (_timer <= 0)
         {
             var bullet = Instantiate(Bullet, BulletSourse.position, direction);
+            
+            bullet.Damage *= 10 * Random.Range(0.8f, 1.2f);
+            bullet.ShotFlySpeed *= Random.Range(0.5f, 1.5f);
+            bullet.CritChance *= 10;
+            bullet.CritMultiplier *= 2;
 
             _timer = RechargeTimer;
         }

@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
-
 public class ShopBoxController : MonoBehaviour
 {
     public List<GameObject> ShopPoolWhite;
@@ -86,10 +82,10 @@ public class ShopBoxController : MonoBehaviour
 
                     ItemCost *= 2;
 
-                    Start();
-
                     var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
                     FlyingItemObject.ChosenItem = _itemPrefab;
+
+                    Start();
                 }
                 _outline.OutlineWidth = 15;
             }

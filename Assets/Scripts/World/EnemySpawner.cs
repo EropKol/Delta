@@ -4,44 +4,50 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float SpawnTime = 3;
+    public bool OldTrainOut;
 
     public List<Transform> SpawnPoints = new List<Transform>();
     public List<Transform> PatrolPoints = new List<Transform>();
     public EnemyAI EnemyPrefab;
 
-    public float EnemyToNext;
-    public float LevelsCompleted;
-    private float _enemyCounter;
+    private float LevelsCompleted;
+    private float _enemySpawnSpeed;
+
+    private float _timer = 30;
 
     private TrainGoIn _train;
     void Start()
     {
-        EnemyToNext = 30 + 1.2f * LevelsCompleted;
+        _enemySpawnSpeed = 2 - 2 * (1 - Mathf.Pow(0.9f, LevelsCompleted));
+
         _train = FindObjectOfType<TrainGoIn>();
 
         StartCoroutine(SpawnEnemies());
     }
 
-    private void Update()
-    {
-        if(_enemyCounter >= EnemyToNext)
-        {
-            _train.IsMoving = true;
-        }
-    }
-
     private IEnumerator SpawnEnemies()
     {
-        float wait = SpawnTime;
+        float wait = _enemySpawnSpeed;
 
-        while (enabled)
+        while (_timer > 0)
         {
-            yield return new WaitForSeconds(wait);
-            var enemy = Instantiate(EnemyPrefab, SpawnPoints[Random.Range(0, SpawnPoints.Count)].position, Random.rotation);
-            enemy.PatrolPoints = PatrolPoints;
+            yield return new WaitForSeconds(_enemySpawnSpeed);
 
-            _enemyCounter++;
+            for (int i = 0; i < LevelsCompleted + 1; i++)
+            {
+                var enemy = Instantiate(EnemyPrefab, SpawnPoints[Random.Range(0, SpawnPoints.Count)].position, Random.rotation);
+                enemy.PatrolPoints = PatrolPoints;
+            }
+
+            _timer -= _enemySpawnSpeed;
+        }
+
+        while (_train.IsMoving == false)
+        {
+            if (OldTrainOut == true)
+            {
+                _train.IsMoving = true;
+            }
         }
     }
 }

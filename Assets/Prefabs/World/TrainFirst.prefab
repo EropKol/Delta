@@ -418,10 +418,10 @@ MonoBehaviour:
   - {fileID: 3858451245576646846}
   - {fileID: 468946605382097344}
   ItemCosts:
-  - {fileID: 3522542731777508535}
-  - {fileID: 1837213186279727688}
-  - {fileID: 84454524942805950}
-  - {fileID: 4530414200099846637}
+  - {fileID: 8283115173137208805}
+  - {fileID: 8571191354350354979}
+  - {fileID: 7313352137165469130}
+  - {fileID: 3908811033340377284}
   _nextScene: 2
 --- !u!1 &1368731002059443969
 GameObject:
@@ -1080,7 +1080,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -1662,6 +1662,7 @@ MonoBehaviour:
   NextLevelScript: {fileID: 9068858879632731965}
   World: {fileID: 0}
   TrainGoOut1: {fileID: 3567162577212105431}
+  GoingOut2: 0
 --- !u!1 &7223859811969855948
 GameObject:
   m_ObjectHideFlags: 0

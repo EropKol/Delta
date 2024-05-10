@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainLevelScript : MonoBehaviour
 {
+    public GameObject Wall4;
+
     private float _timer = 5;
     private float _velocity = 10;
     private float _acceleration = 5.2f;
@@ -29,6 +31,8 @@ public class MainLevelScript : MonoBehaviour
             {
                 _isMoving = false;
                 _spawner.enabled = true;
+
+                Wall4.SetActive(true);
             }
 
             transform.position = new Vector3(0, -2, _distance);

@@ -70,7 +70,7 @@ public class WeaponController : MonoBehaviour
     {
         var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, ShotPoint.rotation * Spread);
 
-        BulletObject.Damage = DamageModifier * 10 * Random.Range(0.8f, 1.2f);
+        BulletObject.Damage *= DamageModifier * 40 * Random.Range(0.8f, 1.2f);
         BulletObject.ShotFlySpeed *= ShotFlySpeedModifier * Random.Range(0.5f, 1.5f);
         BulletObject.CritChance *= CritChancePl;
         BulletObject.CritMultiplier *= CritMultiplierPl;

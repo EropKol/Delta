@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +41,10 @@ public class MenuSettings : MonoBehaviour
         MusicParameter = _musicSlider.value;
         PlayerPrefs.SetFloat("Music", MusicParameter);
 
-        _music.PrefsChange();
+        if (_music != null)
+        {
+            _music.PrefsChange();
+        }
     }
 
     public void Sound()

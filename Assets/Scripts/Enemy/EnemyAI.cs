@@ -11,10 +11,11 @@ public class EnemyAI : MonoBehaviour
     public List<Transform> PatrolPoints;
     public float ViewAngle;
 
+    public bool PlayerNoticed;
     private PlayerController _player;
-    private bool _playerNoticed;
     private Vector3 _direction;
 
+    private HealthScript _health;
     private NavMeshAgent _navMeshAgent;
     private EnemyShootScript _ShootScript;
 
@@ -23,6 +24,8 @@ public class EnemyAI : MonoBehaviour
         _player = FindObjectOfType<PlayerController>();
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        _health = GetComponent<HealthScript>();
 
         _ShootScript = GetComponent<EnemyShootScript>();
 
@@ -34,11 +37,24 @@ public class EnemyAI : MonoBehaviour
         PlayerNoticeUpdate();
 
         PatrolUpdate();
+
+        IsDeadCheckUpdate();
+    }
+
+    void IsDeadCheckUpdate()
+    {
+        if (_health.IsDead)
+        {
+            _navMeshAgent.enabled = false;
+            _ShootScript.enabled = false;
+            _health.enabled = false;
+            GetComponent<EnemyAI>().enabled = false;
+        }
     }
 
     void PatrolUpdate()
     {
-        if (_playerNoticed == false)
+        if (PlayerNoticed == false)
         {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
@@ -72,7 +88,7 @@ public class EnemyAI : MonoBehaviour
 
     void PlayerNoticeUpdate()
     {
-        _playerNoticed = false;
+        PlayerNoticed = false;
 
         _direction = _player.transform.position - transform.position;
         if (Vector3.Angle(transform.forward, _direction) < ViewAngle)
@@ -82,7 +98,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (hit.collider.gameObject == _player.gameObject)
                 {
-                    _playerNoticed = true;
+                    PlayerNoticed = true;
 
                 }
             }

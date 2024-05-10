@@ -7,7 +7,7 @@ public class ToNextLevel : MonoBehaviour
 {
     public GameObject Train;
     public List<ShopBoxController> Shops = new List<ShopBoxController>();
-    public List<Canvas> ItemCosts = new List<Canvas>();
+    public List<GameObject> ItemCosts = new List<GameObject>();
     public int _nextScene = 2;
 
     private GameObject _player;
@@ -27,41 +27,36 @@ public class ToNextLevel : MonoBehaviour
     {
         if (_inExitArea && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(LoadScene());
+            StartCoroutine(LoadScene(_nextScene, gameObject));
 
             for (int i = 0; i < Shops.Count; i++)
             {
                 Shops[i].enabled = false;
-                ItemCosts[i].enabled = false;
+                ItemCosts[i].SetActive(false);
             }
         }
     }
 
-    public IEnumerator LoadScene()
+    public IEnumerator LoadScene(int NextScene, GameObject Activator)
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nextScene, LoadSceneMode.Additive);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextScene, LoadSceneMode.Additive);
 
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
 
-        SceneManager.MoveGameObjectToScene(_player, SceneManager.GetSceneByBuildIndex(_nextScene));
-        SceneManager.MoveGameObjectToScene(Train, SceneManager.GetSceneByBuildIndex(_nextScene));
+        SceneManager.MoveGameObjectToScene(_player, SceneManager.GetSceneByBuildIndex(NextScene));
+        SceneManager.MoveGameObjectToScene(Train, SceneManager.GetSceneByBuildIndex(NextScene));
         SceneManager.UnloadSceneAsync(currentScene);
         _nextLevelUI.SetActive(false);
-        if (_nextScene == 3)
+        if (NextScene == 3)
         {
-            _nextScene = 2;
-
             TurnOn();
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(Activator);
 
     }
 
@@ -70,15 +65,18 @@ public class ToNextLevel : MonoBehaviour
         for (int i = 0; i < Shops.Count; i++)
         {
             Shops[i].enabled = true;
-            ItemCosts[i].enabled = true;
+            ItemCosts[i].SetActive(true);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _inExitArea = true;
+        if (other.tag == "Player")
+        {
+            _inExitArea = true;
 
-        _nextLevelUI.SetActive(true);
+            _nextLevelUI.SetActive(true);
+        }
     }
 
     private void OnTriggerExit(Collider other)

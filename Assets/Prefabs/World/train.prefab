@@ -1242,6 +1242,7 @@ MonoBehaviour:
   NextLevelScript: {fileID: 8541020334088187920}
   World: {fileID: 0}
   TrainGoOut1: {fileID: 2489248782397216210}
+  GoingOut2: 0
 --- !u!1 &3714135028107165374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,12 +1317,12 @@ MonoBehaviour:
   - {fileID: 7936979839713587733}
   - {fileID: 574393357351200207}
   ItemCosts:
-  - {fileID: 5709994011123884189}
-  - {fileID: 3948390672694881495}
-  - {fileID: 8002907053131025984}
-  - {fileID: 4814934715141821630}
-  - {fileID: 1774727621965525079}
-  _nextScene: 3
+  - {fileID: 2566078300390150009}
+  - {fileID: 1018081379092277079}
+  - {fileID: 132173138913335844}
+  - {fileID: 5367725895634315570}
+  - {fileID: 8824599789285644554}
+  _nextScene: 2
 --- !u!1 &4463323875278683277
 GameObject:
   m_ObjectHideFlags: 0

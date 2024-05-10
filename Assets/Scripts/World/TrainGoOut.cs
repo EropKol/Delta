@@ -8,9 +8,21 @@ public class TrainGoOut : MonoBehaviour
     public Transform _train;
     private float _speed = 0.1f;
 
+    private PlayerController _player;
+
+    private void Start()
+    {
+        _player = FindObjectOfType<PlayerController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(GoOut());
+        if (other.gameObject == _player.gameObject)
+        {
+            StartCoroutine(GoOut());
+
+            FindObjectOfType<EnemySpawner>().OldTrainOut = true;
+        }
     }
 
     private IEnumerator GoOut()
