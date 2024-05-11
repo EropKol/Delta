@@ -128,7 +128,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 620864599135290740}
         m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
         m_MethodName: Sound
         m_Mode: 1
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 620864599135290740}
         m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
         m_MethodName: Music
         m_Mode: 1
@@ -3747,7 +3747,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 620864599135290740}
         m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
         m_MethodName: Sensitivity
         m_Mode: 1
@@ -4455,7 +4455,7 @@ Transform:
   - {fileID: 1188040193401259590}
   - {fileID: 1186454321975124990}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &205816187651086133
 MonoBehaviour:
@@ -5152,7 +5152,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 620864599135290740}
         m_TargetAssemblyTypeName: MenuSettings, Assembly-CSharp
         m_MethodName: FOV
         m_Mode: 1

@@ -11,7 +11,7 @@ public class TrainToTunnel : MonoBehaviour
     public GameObject TrainGoOut1;
     public bool GoingOut2;
 
-    private float _speed = 0.1f;
+    private float _speed = 0.5f;
 
     private void OnTriggerEnter(Collider other)
     {

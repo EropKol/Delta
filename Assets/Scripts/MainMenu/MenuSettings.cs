@@ -18,19 +18,20 @@ public class MenuSettings : MonoBehaviour
 
     private MusicPrefs _music;
     private List<SoundPrefs> _sound = new List<SoundPrefs>();
+    private CameraController _cameraController;
     private CameraFOVScript _camera;
 
     private void Start()
     {
-        _music = FindObjectOfType<MusicPrefs>().GetComponent<MusicPrefs>();
-
+        _music = FindObjectOfType<MusicPrefs>();
+        _cameraController = FindObjectOfType<CameraController>();
         _camera = FindObjectOfType<CameraFOVScript>().GetComponent<CameraFOVScript>();
 
-        MusicParameter = PlayerPrefs.GetFloat("Music", 1);
+        MusicParameter = PlayerPrefs.GetFloat("Music", 0.5f);
         _musicSlider.value = MusicParameter;
-        SoundParameter = PlayerPrefs.GetFloat("Sound", 1);
+        SoundParameter = PlayerPrefs.GetFloat("Sound", 0.5f);
         _soundSlider.value = SoundParameter;
-        SensitivityParameter = PlayerPrefs.GetFloat("Sensitivity", 1);
+        SensitivityParameter = PlayerPrefs.GetFloat("Sensitivity", 0.5f);
         _sensitivitySlider.value = SensitivityParameter;
         FOVParameter = PlayerPrefs.GetFloat("FOV", 90);
         _fieldOfViewSlider.value = FOVParameter / 180;
@@ -63,6 +64,10 @@ public class MenuSettings : MonoBehaviour
     {
         SensitivityParameter = _sensitivitySlider.value;
         PlayerPrefs.SetFloat("Sensitivity", SensitivityParameter);
+        if (_cameraController != null)
+        {
+            _cameraController.PrefsChange();
+        }
     }
 
     public void FOV()

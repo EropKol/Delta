@@ -9,7 +9,12 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        RotationSpeedParameter = PlayerPrefs.GetFloat("Sensitivity", 1) / 8;
+        PrefsChange();
+    }
+
+    public void PrefsChange()
+    {
+        RotationSpeedParameter = PlayerPrefs.GetFloat("Sensitivity", 0.5f) / 8;
     }
 
     void Update()

@@ -437,13 +437,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 704680449}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2003,7 +2003,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a90e293b6bf10754c8383642aeacd99d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -3241,8 +3241,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1528438327}
   - component: {fileID: 1528438326}
-  - component: {fileID: 1528438329}
   - component: {fileID: 1528438328}
+  - component: {fileID: 1528438329}
   m_Layer: 0
   m_Name: Directional Light (2)
   m_TagString: Untagged
@@ -3337,7 +3337,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 46eb02cf7c783f1469f42329969ec79c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

@@ -36,7 +36,7 @@ public class WeaponController : MonoBehaviour
 
     void ShotUpdate()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && _rechargeTimer <= 0)
+        if (Input.GetKey(KeyCode.Mouse0) && _rechargeTimer <= 0 && Time.timeScale != 0)
         {
 
             for (int i = 0; i < ShotTimes; i++)

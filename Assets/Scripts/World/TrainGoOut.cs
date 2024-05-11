@@ -6,7 +6,7 @@ using UnityEngine;
 public class TrainGoOut : MonoBehaviour
 {
     public Transform _train;
-    private float _speed = 0.1f;
+    private float _speed = 0.5f;
 
     private PlayerController _player;
 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class IDOnTop : MonoBehaviour
+public class IDOnTop : MonoBehaviour // Prototype Only
 {
     public TextMeshProUGUI Text;
 
-    private void Start()
+    private void Update()
     {
         Text.text = GetComponentInChildren<ItemEffect>().ItemID.ToString();
     }

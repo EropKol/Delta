@@ -45,5 +45,7 @@ public class InGameMenuButtons : MonoBehaviour
     public void ExitToMenu()
     {
         SceneManager.LoadScene(0);
+
+        Time.timeScale = 1;
     }
 }

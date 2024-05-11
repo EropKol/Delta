@@ -40,6 +40,9 @@ public class PlayerDeathScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene(0);
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
             if (Input.GetKeyDown(KeyCode.P))
             {

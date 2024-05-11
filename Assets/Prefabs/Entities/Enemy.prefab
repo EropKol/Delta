@@ -261,7 +261,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ViewAngle: 30
+  ViewAngle: 90
   PlayerNoticed: 0
 --- !u!114 &3912716281008263468
 MonoBehaviour:
