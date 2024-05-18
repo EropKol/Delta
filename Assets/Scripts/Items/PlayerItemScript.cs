@@ -62,9 +62,9 @@ public class PlayerItemScript : MonoBehaviour
 
         // Speed
 
-        _player.WalkingSpeed = 1 * Mathf.Pow(1.1f, ItemIDList[4]);  // 4 Black Shoes (White)
+        _player.WalkingSpeed = 1 * Mathf.Pow(1.1f, ItemIDList[4]);  // 4 Black Shoe (White)
 
-        _player.RunningSpeed = 1.75f * Mathf.Pow(1.15f, ItemIDList[5]); // 5 White Shoes (White)
+        _player.RunningSpeed = 1.75f * Mathf.Pow(1.15f, ItemIDList[5]); // 5 White Shoe (White)
 
         // Projectile Change
 

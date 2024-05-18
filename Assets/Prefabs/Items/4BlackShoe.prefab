@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2513255380381306405}
   - component: {fileID: -4872567491260197552}
   m_Layer: 0
-  m_Name: 4BlackShoes
+  m_Name: 4BlackShoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,14 +12,24 @@ public class TrainToTunnel : MonoBehaviour
     public bool GoingOut2;
 
     private float _speed = 0.5f;
+    private GameObject _player;
+
+
+    private void Start()
+    {
+        _player = FindObjectOfType<PlayerController>().gameObject;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GoingOut2 == false)
+        if (other.gameObject == _player)
         {
-            StartCoroutine(GoOut());
+            if (GoingOut2 == false)
+            {
+                StartCoroutine(GoOut());
 
-            GoingOut2 = true;
+                GoingOut2 = true;
+            }
         }
     }
 

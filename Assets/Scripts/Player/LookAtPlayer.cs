@@ -13,6 +13,6 @@ public class LookAtPlayer : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(_playerTransform.position + Vector3.up * 1.5f);
+        transform.forward = - _playerTransform.forward;
     }
 }

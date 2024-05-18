@@ -14,20 +14,23 @@ public class CameraController : MonoBehaviour
 
     public void PrefsChange()
     {
-        RotationSpeedParameter = PlayerPrefs.GetFloat("Sensitivity", 0.5f) / 8;
+        RotationSpeedParameter = PlayerPrefs.GetFloat("Sensitivity", 0.5f);
     }
 
     void Update()
     {
-        var NewAngleY = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * Time.deltaTime * RotationSpeedParameter * 1100;
-        transform.localEulerAngles = new Vector3(0, NewAngleY, 0);
+        if (Time.timeScale != 0)
+        {
+            var NewAngleY = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * RotationSpeedParameter * 8;
+            transform.localEulerAngles = new Vector3(0, NewAngleY, 0);
 
-        var NewAngleX = CameraHolder.localEulerAngles.x - Input.GetAxis("Mouse Y") * Time.deltaTime * RotationSpeedParameter * 600;
-        if (NewAngleX > 180)
-            NewAngleX -= 360;
+            var NewAngleX = CameraHolder.localEulerAngles.x - Input.GetAxis("Mouse Y") * RotationSpeedParameter * 5;
+            if (NewAngleX > 180)
+                NewAngleX -= 360;
 
-        NewAngleX = Mathf.Clamp(NewAngleX, MinAngle, MaxAngle);
+            NewAngleX = Mathf.Clamp(NewAngleX, MinAngle, MaxAngle);
 
-        CameraHolder.localEulerAngles = new Vector3(NewAngleX, 0, 0);
+            CameraHolder.localEulerAngles = new Vector3(NewAngleX, 0, 0);
+        }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2513255380381306405}
   - component: {fileID: 3890675322813532645}
   m_Layer: 0
-  m_Name: 5WhiteShoes
+  m_Name: 5WhiteShoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
