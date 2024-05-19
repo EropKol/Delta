@@ -20,6 +20,6 @@ public class HealthUI : MonoBehaviour
     {
         HealthBar.rectTransform.anchorMax = new Vector2(_playerHeath.HealthPoints / _playerHeath.MaxHealthPoints, 1);
 
-        HealthText.text = _playerHeath.HealthPoints + " / " + _playerHeath.MaxHealthPoints;
+        HealthText.text = Mathf.Round(_playerHeath.HealthPoints) + " / " + _playerHeath.MaxHealthPoints;
     }
 }

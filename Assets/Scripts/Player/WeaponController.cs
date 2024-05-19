@@ -24,6 +24,7 @@ public class WeaponController : MonoBehaviour
     private Quaternion Spread =  Quaternion.Euler(0, 0, 0);
 
     public bool IsDeathEffect = false;
+    public float DeathEffectRadius = 7;
 
     private void Update()
     {
@@ -78,6 +79,7 @@ public class WeaponController : MonoBehaviour
         if (IsDeathEffect)
         {
             BulletObject.IsDeathEffect = true;
+            BulletObject.DeathEffectRadius = DeathEffectRadius;
         }
     }
 }

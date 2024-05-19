@@ -97,6 +97,8 @@ public class PlayerItemScript : MonoBehaviour
         {
             _weapon.IsDeathEffect = true;
 
+            _weapon.DeathEffectRadius = 6 + 1 * ItemIDList[12];
+
         }
 
         // Misc

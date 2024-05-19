@@ -415,11 +415,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1075309472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3666744481236316150, guid: 8d6fb298ac4eb674c85ec2799ca3d333, type: 3}
-  m_PrefabInstance: {fileID: 7180087456228348582}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277413457 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8100254118517892212, guid: 217b105c3dacd2d45aeb9cba8bc2dc57, type: 3}
@@ -741,11 +736,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9068858879632731965, guid: 8d6fb298ac4eb674c85ec2799ca3d333, type: 3}
-      propertyPath: ItemCosts.Array.data[2]
-      value: 
-      objectReference: {fileID: 1075309472}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2889306166210620442, guid: 8d6fb298ac4eb674c85ec2799ca3d333, type: 3}
+    - {fileID: 5811262934600590520, guid: 8d6fb298ac4eb674c85ec2799ca3d333, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

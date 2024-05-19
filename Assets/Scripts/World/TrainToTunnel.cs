@@ -18,6 +18,10 @@ public class TrainToTunnel : MonoBehaviour
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>().gameObject;
+
+        var levelPlus = PlayerPrefs.GetFloat("LevelsCompleted", 0) + 1;
+
+        PlayerPrefs.SetFloat("LevelsCompleted", levelPlus);
     }
 
     private void OnTriggerEnter(Collider other)

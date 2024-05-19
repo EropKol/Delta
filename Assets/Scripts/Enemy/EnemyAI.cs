@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public int EnemyType;
-    // 1 - Fighter, 2 - Shooter
+    // 1 - Fighter, 2 - Shooter;
 
     public List<Transform> PatrolPoints;
     public float ViewAngle;

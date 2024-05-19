@@ -11,6 +11,10 @@ public class BulletScript : MonoBehaviour
     public float TurnUp = 0;
 
     public bool IsDeathEffect = false;
+    public float DeathEffectRadius = 7;
+
+    public int DamageType = 0;
+    // 0 - Nothing, 1 - Fire, 2 - Ice, 3 - Earth, 4 - Air;
 
     private Rigidbody _rigidBody;
 
@@ -53,11 +57,11 @@ public class BulletScript : MonoBehaviour
         {
             if (Random.Range(0, 100) > 100 * CritChance)
             {
-                health.DealDamage(Damage, IsDeathEffect);
+                health.DealDamage(Damage, IsDeathEffect, DamageType, DeathEffectRadius);
             }
             else
             {
-                health.DealDamage(Damage * CritMultiplier, IsDeathEffect);
+                health.DealDamage(Damage * CritMultiplier, IsDeathEffect, DamageType, DeathEffectRadius);
             }
         }
     }

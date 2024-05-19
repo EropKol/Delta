@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealthScript : MonoBehaviour
@@ -9,7 +10,16 @@ public class HealthScript : MonoBehaviour
     public float HealthRegen = 1;
     public bool IsDead = false;
 
-    public float BurningTimer;
+    private float _burningTimer;
+    private float _freezeTimer;
+    private float _poisonedTimer;
+
+    public GameObject UIFire;
+    public GameObject UIIce;
+    public GameObject UIPoison;
+    public TextMeshProUGUI UIFireTimer;
+    public TextMeshProUGUI UIIceTimer;
+    public TextMeshProUGUI UIPoisonTimer;
 
     public Animator Animator;
     public float DeathCost = 20;
@@ -20,7 +30,7 @@ public class HealthScript : MonoBehaviour
 
     private MoneyScript _playersMoney;
 
-    private float _timerMax = 3;
+    private float _timerMax = 1;
     private float _timer;
 
     private void Start()
@@ -32,7 +42,7 @@ public class HealthScript : MonoBehaviour
         HealthPoints = MaxHealthPoints;
     }
 
-    public void DealDamage(float DamageDealt, bool IsDeathEffect = false)
+    public void DealDamage(float DamageDealt, bool IsDeathEffect = false, int DamageType = 0, float DeathEffectRadius = 7)
     {
         if (_AI != null)
         {
@@ -40,6 +50,26 @@ public class HealthScript : MonoBehaviour
         }
 
         HealthPoints -= DamageDealt;
+
+        if (DamageType == 1)
+        {
+            Burning(1f);
+        }
+
+        if (DamageType == 2)
+        {
+            Freeze(3f);
+        }
+
+        if (DamageType == 3)
+        {
+            Poisoned(5f);
+        }
+
+        if (DamageType == 4)
+        {
+            HealthPoints -= DamageDealt * 0.2f;
+        }
 
         if (HealthPoints <= 0)
         {
@@ -55,6 +85,8 @@ public class HealthScript : MonoBehaviour
             {
                 var zone = Instantiate(ZoneEffect, transform.position, Quaternion.identity);
                 zone.Mode = 2;
+                zone.BurnTime = 3;
+                zone.Size = DeathEffectRadius;
             }
         }
     }
@@ -67,29 +99,77 @@ public class HealthScript : MonoBehaviour
         {
             _timer = _timerMax;
 
-            HealthPoints += HealthRegen;
+            HealthPoints += HealthRegen * 1.5f;
             HealthPoints = Mathf.Clamp(HealthPoints, 0, MaxHealthPoints);
-
-            if (BurningTimer > 0)
-            {
-                BurningTimer -= Time.deltaTime;
-
-                HealthPoints -= 15 * Time.deltaTime;
-            }
-
-            if (HealthPoints == 0)
-            {
-                DealDamage(0);
-            }
         }
 
-        HealthPoints = Mathf.Round(HealthPoints);
+        if (_burningTimer > 0)
+        {
+            _burningTimer -= Time.deltaTime;
+
+            HealthPoints -= 6 * Time.deltaTime;
+
+            UIFire.SetActive(true);
+
+            UIFireTimer.text = Mathf.Round(_burningTimer).ToString();
+        }
+        else
+        {
+            UIFire.SetActive(false);
+        }
+
+        if (_freezeTimer > 0)
+        {
+            _freezeTimer -= Time.deltaTime;
+
+            HealthPoints -= 4 * Time.deltaTime;
+
+            UIIce.SetActive(true);
+
+            UIIceTimer.text = Mathf.Round(_freezeTimer).ToString();
+        }
+        else
+        {
+            UIIce.SetActive(false);
+        }
+
+        if (_poisonedTimer > 0)
+        {
+            _poisonedTimer -= Time.deltaTime;
+
+            HealthPoints -= 2 * Time.deltaTime;
+
+            UIPoison.SetActive(true);
+
+            UIPoisonTimer.text = Mathf.Round(_poisonedTimer).ToString();
+        }
+        else
+        {
+            UIPoison.SetActive(false);
+        }
+
+        if (HealthPoints <= 0)
+        {
+            DealDamage(0);
+        }
     }
 
     public void Burning(float PlusTime)
     {
-        BurningTimer += PlusTime;
+        _burningTimer += PlusTime;
 
+    }
+
+    public void Freeze(float PlusTime)
+    {
+        _freezeTimer += PlusTime;
+
+    }
+
+    public void Poisoned(float PlusTime)
+    {
+        _poisonedTimer += PlusTime;
+            
     }
 
     void Destroy()

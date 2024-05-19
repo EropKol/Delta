@@ -18,7 +18,9 @@ public class EnemySpawner : MonoBehaviour
     private TrainGoIn _train;
     void Start()
     {
-        _enemySpawnSpeed = 2 - 2 * (1 - Mathf.Pow(0.9f, LevelsCompleted));
+        LevelsCompleted = PlayerPrefs.GetFloat("LevelsCompleted", 0);
+
+        _enemySpawnSpeed = 5 * Mathf.Pow(0.9f, LevelsCompleted);
 
         _train = FindObjectOfType<TrainGoIn>();
 
@@ -37,6 +39,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 var enemy = Instantiate(EnemyPrefab, SpawnPoints[Random.Range(0, SpawnPoints.Count)].position, Random.rotation);
                 enemy.PatrolPoints = PatrolPoints;
+
+                var health = enemy.GetComponent<HealthScript>();
+                health.MaxHealthPoints *= Mathf.Pow(1.1f, LevelsCompleted);
+                health.DeathCost *= Mathf.Pow(1.1f, LevelsCompleted);
+
+                health.GetComponent<EnemyShootScript>().DamageMultiplier *= Mathf.Pow(1.1f, LevelsCompleted);
             }
 
             _timer -= _enemySpawnSpeed;

@@ -9,7 +9,7 @@ public class ZoneScript : MonoBehaviour
 
     public int Mode = 1;
 
-    public float BurnTime;
+    public float BurnTime = 3;
 
     private float _timeToFade = 1;
     private Renderer _renderer;
@@ -17,11 +17,20 @@ public class ZoneScript : MonoBehaviour
     private float _timeToEnd = 0.1f;
     private bool _active = true;
 
+    private Collider[] colliders;
+
     private void Start()
     {
         transform.localScale *= Size;
 
         _renderer = GetComponent<Renderer>();
+
+        colliders = Physics.OverlapSphere(transform.position, Size/2);
+
+        foreach (Collider collider in colliders)
+        {
+            Explosion(collider);
+        }
     }
 
     private void Update()
@@ -31,11 +40,11 @@ public class ZoneScript : MonoBehaviour
         VisualTimer();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Explosion(Collider other)
     {
         if (_active == true)
         {
-            var health = GetComponent<HealthScript>();
+            var health = other.GetComponent<HealthScript>();
             if (health != null)
             {
                 if (Mode == 1)

@@ -12,13 +12,15 @@ public class BombScript : MonoBehaviour
     private void Start()
     {
         Invoke("Explode", TimeToExplode);
+
+        ExplosionDamage = GetComponent<BulletScript>().Damage;
     }
 
     void Explode()
     {
-        Destroy(gameObject);
-
         var zone = Instantiate(Zone, transform.position, Quaternion.identity);
         zone.GetComponent<ZoneScript>().ExplosionDamage = ExplosionDamage;
+
+        Destroy(gameObject);
     }
 }

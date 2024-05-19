@@ -11,6 +11,6 @@ public class MoneyScript : MonoBehaviour
 
     private void Update()
     {
-        MoneyText.text = PlayersMoney.ToString();
+        MoneyText.text = Mathf.Round(PlayersMoney).ToString();
     }
 }
