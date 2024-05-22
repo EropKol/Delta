@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelTrainTwoAndMore.unity
     guid: d39c934737b052647ac87af18776c0c9
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: 5162866c8e4d4ee40b30abb97b4f0af4
   m_configObjects: {}

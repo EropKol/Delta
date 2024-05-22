@@ -28,7 +28,6 @@ public class PlayerDeathScript : MonoBehaviour
             GetComponent<PlayerController>().enabled = false;
             GetComponent<PlayerItemScript>().enabled = false;
             GetComponent<CharacterController>().enabled = false;
-            GetComponent<CameraController>().enabled = false;
             GetComponent<MoneyScript>().enabled = false;
             GetComponent<WeaponController>().enabled = false;
         }

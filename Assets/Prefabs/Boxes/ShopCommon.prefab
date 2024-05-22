@@ -193,11 +193,13 @@ MonoBehaviour:
   - {fileID: 4528225661700019470, guid: c01cee593b3b86848b4ef8f1d5fc3232, type: 3}
   - {fileID: 4528225661700019470, guid: a7c59fa7108b7f74b8ab9c1feb497c69, type: 3}
   - {fileID: 4528225661700019470, guid: 744f4d051ed15bc45a4b646d1f05922b, type: 3}
+  - {fileID: 4528225661700019470, guid: cd6723c8f9095f14a9776e06fae51ea0, type: 3}
+  - {fileID: 4528225661700019470, guid: cb6a3104cb35e7d408d39648e3d066d4, type: 3}
+  - {fileID: 4528225661700019470, guid: f4ca20c86942d0243bd37cec3aa9004b, type: 3}
   ShopPoolRed:
   - {fileID: 4528225661700019470, guid: 18c4298662659eb4380cbfde2c15692c, type: 3}
   - {fileID: 4528225661700019470, guid: a259644c51799c5468e0b3c77fb85b39, type: 3}
   - {fileID: 4528225661700019470, guid: f93b1666707317a40aae156e5cbd61a9, type: 3}
-  - {fileID: 4528225661700019470, guid: cd6723c8f9095f14a9776e06fae51ea0, type: 3}
   ItemCost: 20
   WhiteChance: 90
   GreenChance: 10

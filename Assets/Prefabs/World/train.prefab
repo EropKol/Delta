@@ -313,6 +313,7 @@ MonoBehaviour:
   - {fileID: 278330519324008140}
   - {fileID: 3954133793934735070}
   _nextScene: 2
+  _bossScene: 5
 --- !u!1 &7123883343493865172
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +843,10 @@ PrefabInstance:
     - target: {fileID: 2137497330283622819, guid: c2fb55f269407954c9ed28091b4eaf77, type: 3}
       propertyPath: m_Name
       value: ShopRare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594694396390955334, guid: c2fb55f269407954c9ed28091b4eaf77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

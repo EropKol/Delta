@@ -23,7 +23,7 @@ public class MenuSettings : MonoBehaviour
 
     private void Start()
     {
-        _music = FindObjectOfType<MusicPrefs>();
+        _music = FindObjectOfType<MusicPrefs>().GetComponent<MusicPrefs>();
         _cameraController = FindObjectOfType<CameraController>();
         _camera = FindObjectOfType<CameraFOVScript>().GetComponent<CameraFOVScript>();
 
@@ -42,10 +42,7 @@ public class MenuSettings : MonoBehaviour
         MusicParameter = _musicSlider.value;
         PlayerPrefs.SetFloat("Music", MusicParameter);
 
-        if (_music != null)
-        {
-            _music.PrefsChange();
-        }
+        _music.PrefsChange();
     }
 
     public void Sound()

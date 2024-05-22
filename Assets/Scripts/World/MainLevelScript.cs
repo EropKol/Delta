@@ -11,17 +11,11 @@ public class MainLevelScript : MonoBehaviour
     private float _acceleration = 5.2f;
 
     private float _distance;
-    private bool _isMoving = true;
-    private EnemySpawner _spawner;
-
-    private void Start()
-    {
-        _spawner = GetComponent<EnemySpawner>();
-    }
+    public bool IsMoving = true;
 
     private void FixedUpdate()
     {
-        if (_isMoving)
+        if (IsMoving)
         {
             if (_timer >= 0)
             {
@@ -29,8 +23,7 @@ public class MainLevelScript : MonoBehaviour
             }
             else
             {
-                _isMoving = false;
-                _spawner.enabled = true;
+                IsMoving = false;
 
                 Wall4.SetActive(true);
             }

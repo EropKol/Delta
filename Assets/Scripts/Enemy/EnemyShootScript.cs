@@ -10,7 +10,7 @@ public class EnemyShootScript : MonoBehaviour
     public float RechargeTimer = 3;
     private float _timer;
 
-    public float DamageMultiplier;
+    public float DamageMultiplier = 1;
     public int DamageType = 0;
     // 0 - Nothing, 1 - Fire, 2 - Ice, 3 - Earth, 4 - Air;
 

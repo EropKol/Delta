@@ -152,13 +152,13 @@ GameObject:
   - component: {fileID: 1878691747097764122}
   - component: {fileID: 1063948602009049474}
   - component: {fileID: 6513747880292841748}
-  - component: {fileID: 8836629899561887481}
   - component: {fileID: 3912716281008263468}
   - component: {fileID: 7984040075988487379}
   - component: {fileID: 3009743611812614996}
   - component: {fileID: 1497379965965057895}
+  - component: {fileID: 8272223178428127470}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,14 +173,14 @@ Transform:
   m_GameObject: {fileID: 1173155462516816500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 70, y: 0, z: 70}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6674324031746227502}
   - {fileID: 6128291296701752947}
   - {fileID: 3596473836805173896}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1063948602009049474
 MonoBehaviour:
@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 0
-  MaxHealthPoints: 100
-  HealthRegen: 1
-  Defence: 0
+  MaxHealthPoints: 3000
+  HealthRegen: 25
+  Defence: -15
   IsDead: 0
   UIFire: {fileID: 7510452164711229508}
   UIIce: {fileID: 4618601453409045187}
@@ -206,7 +206,7 @@ MonoBehaviour:
   UIIceTimer: {fileID: 800806402813550478}
   UIPoisonTimer: {fileID: 2841058234225899599}
   Animator: {fileID: 2403906645649305187}
-  DeathCost: 20
+  DeathCost: 2000
   ZoneEffect: {fileID: 2540298408717256595, guid: 252e31c99857713439408c7d3db71a7e, type: 3}
 --- !u!136 &6513747880292841748
 CapsuleCollider:
@@ -230,27 +230,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: -0.25, y: 0.75, z: 0}
---- !u!114 &8836629899561887481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173155462516816500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79834b9f54e474b468adbeb294cd9eec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyType: 2
-  PatrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ViewAngle: 90
-  PlayerNoticed: 0
+  m_Center: {x: -0.12, y: 0.75, z: 0}
 --- !u!114 &3912716281008263468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,12 +289,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 1173155462516816500}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Radius: 1
+  m_Speed: 15
+  m_Acceleration: 30
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 10
+  m_AngularSpeed: 180
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -322,6 +302,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8272223178428127470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173155462516816500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b035db6d98e284941854be25364951b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691824082282973717
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +366,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 70aac3ad5ad0cc449992fce604081947, type: 2}
+  - {fileID: 2100000, guid: 50fb468c83790c243919cdeb3674f0ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -10,8 +10,12 @@ public class ToNextLevel : MonoBehaviour
     public List<GameObject> ItemCosts = new List<GameObject>();
     public int _nextScene = 2;
 
+    public int _bossScene = 4;
+
     private GameObject _player;
     private GameObject _nextLevelUI;
+    private GameObject _bossLevelUI;
+    private bool _readyForBoss = false;
     private bool _inExitArea = false;
 
     private void Start()
@@ -20,7 +24,16 @@ public class ToNextLevel : MonoBehaviour
 
         _nextLevelUI = FindObjectOfType<PointerNextLevel>().gameObject;
 
+        _bossLevelUI = FindObjectOfType<PointerBossLevel>().transform.GetChild(0).gameObject;
+
         _nextLevelUI.SetActive(false);
+
+        _bossLevelUI.SetActive(false);
+
+        if (PlayerPrefs.GetFloat("LevelsCompleted", 0) >= 5)
+        {
+            _readyForBoss = true;
+        }
     }
 
     private void Update()
@@ -28,6 +41,17 @@ public class ToNextLevel : MonoBehaviour
         if (_inExitArea && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(LoadScene(_nextScene, gameObject));
+
+            for (int i = 0; i < Shops.Count; i++)
+            {
+                Shops[i].enabled = false;
+                ItemCosts[i].SetActive(false);
+            }
+        }
+
+        if (_inExitArea && Input.GetKeyDown(KeyCode.T))
+        {
+            StartCoroutine(LoadScene(_bossScene, gameObject));
 
             for (int i = 0; i < Shops.Count; i++)
             {
@@ -76,6 +100,11 @@ public class ToNextLevel : MonoBehaviour
             _inExitArea = true;
 
             _nextLevelUI.SetActive(true);
+
+            if (_readyForBoss)
+            {
+                _bossLevelUI.SetActive(true);
+            }
         }
     }
 
@@ -84,5 +113,7 @@ public class ToNextLevel : MonoBehaviour
         _inExitArea = false;
 
         _nextLevelUI.SetActive(false);
+
+        _bossLevelUI.SetActive(false);
     }
 }

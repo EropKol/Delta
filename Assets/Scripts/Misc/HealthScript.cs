@@ -8,6 +8,7 @@ public class HealthScript : MonoBehaviour
     public float HealthPoints;
     public float MaxHealthPoints = 100;
     public float HealthRegen = 1;
+    public float Defence = 0;
     public bool IsDead = false;
 
     private float _burningTimer;
@@ -49,24 +50,24 @@ public class HealthScript : MonoBehaviour
             _AI.PlayerNoticed = true;
         }
 
-        HealthPoints -= DamageDealt;
+        HealthPoints -= Mathf.Clamp(DamageDealt - Defence, 0, 2 * DamageDealt);
 
-        if (DamageType == 1)
+        if (DamageType == 1 || DamageType == 5)
         {
             Burning(1f);
         }
 
-        if (DamageType == 2)
+        if (DamageType == 2 || DamageType == 5)
         {
             Freeze(3f);
         }
 
-        if (DamageType == 3)
+        if (DamageType == 3 || DamageType == 5)
         {
             Poisoned(5f);
         }
 
-        if (DamageType == 4)
+        if (DamageType == 4 || DamageType == 5)
         {
             HealthPoints -= DamageDealt * 0.2f;
         }

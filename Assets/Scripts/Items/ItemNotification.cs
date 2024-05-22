@@ -160,6 +160,20 @@ public class ItemNotification : MonoBehaviour
             NotificationText.text = "Прыжки теперь выше";
         }
 
+        if (ID == 15)
+        {
+            NotificationName.text = "Железный Щит";
+
+            NotificationText.text = "Защищает от входящего урона, но не от дебаффов";
+        }
+
+        if (ID == 16)
+        {
+            NotificationName.text = "Красное Зелье";
+
+            NotificationText.text = "Увеличивает максимум здоровья!";
+        }
+
         ItemsOrder.Remove(ItemsOrder[0]);
     }
 }

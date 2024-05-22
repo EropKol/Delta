@@ -62,9 +62,9 @@ public class PlayerItemScript : MonoBehaviour
 
         // Speed
 
-        _player.WalkingSpeed = 1 * Mathf.Pow(1.1f, ItemIDList[4]);  // 4 Black Shoe (White)
+        _player.WalkingSpeed = 1 * Mathf.Pow(1.05f, ItemIDList[4]);  // 4 Black Shoe (White)
 
-        _player.RunningSpeed = 1.75f * Mathf.Pow(1.15f, ItemIDList[5]); // 5 White Shoe (White)
+        _player.RunningSpeed = 1.75f * Mathf.Pow(1.075f, ItemIDList[5]); // 5 White Shoe (White)
 
         // Projectile Change
 
@@ -73,14 +73,14 @@ public class PlayerItemScript : MonoBehaviour
             _weapon.BulletPrefab = Bomb;
 
             _weapon.RechargeTime = 2.25f + 0.25f * ItemIDList[2];
-            Bomb.Damage = 3.9f + 0.1f * ItemIDList[2];
+            Bomb.Damage = 1.9f + 0.1f * ItemIDList[2];
         }
         else
         {
             _weapon.BulletPrefab = Bullet;
         }
 
-        _player.JumpModifier = 1 + Mathf.Pow(1.3f, ItemIDList[14]); // 14 Green Shoes (Green)
+        _player.JumpModifier = Mathf.Pow(1.05f, ItemIDList[14]); // 14 Green Shoes (Green)
         
 
         // Spread
@@ -100,6 +100,14 @@ public class PlayerItemScript : MonoBehaviour
             _weapon.DeathEffectRadius = 6 + 1 * ItemIDList[12];
 
         }
+
+        // Health
+
+        _health.HealthRegen = 0.5f + 0.25f * ItemIDList[13]; // 13 Bread (Green)
+
+        _health.Defence = 0 + 2 * ItemIDList[15]; // 15 Shield (Green)
+
+        _health.MaxHealthPoints = 100 + 50 * ItemIDList[16]; // Red potion (Green)
 
         // Misc
 
@@ -133,7 +141,5 @@ public class PlayerItemScript : MonoBehaviour
                 itemObject.ChosenItem = Pool11[Random.Range(0, Pool11.Count)];
             }
         }
-
-        _health.HealthRegen = 0.5f + 0.25f * ItemIDList[13]; // 13 Bread (Green)
     }
 }
