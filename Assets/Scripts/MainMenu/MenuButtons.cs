@@ -5,9 +5,17 @@ public class MenuButtons : MonoBehaviour
 {
     public Animator AnimatorController;
     private bool SettingsOpened;
+    private AudioSource _sound;
+
+    private void Start()
+    {
+        _sound = GetComponent<AudioSource>();
+    }
 
     public void StartGame()
     {
+        _sound.Play();
+
         SceneManager.LoadScene(1);
 
         PlayerPrefs.SetFloat("LevelsCompleted", 0);
@@ -15,6 +23,8 @@ public class MenuButtons : MonoBehaviour
 
     public void Options()
     {
+        _sound.Play();
+
         if (SettingsOpened)
         {
             SettingsOpened = false;
@@ -29,6 +39,8 @@ public class MenuButtons : MonoBehaviour
 
     public void ExitGame()
     {
+        _sound.Play();
+
         Application.Quit();
     }
 }

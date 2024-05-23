@@ -8,6 +8,12 @@ public class InGameMenuButtons : MonoBehaviour
     public GameObject MenuObject;
     public Animator AnimatorController;
     private bool SettingsOpened;
+    private AudioSource _sound;
+
+    private void Start()
+    {
+        _sound = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -19,6 +25,8 @@ public class InGameMenuButtons : MonoBehaviour
 
     public void StartGame()
     {
+        _sound.Play();
+
         Time.timeScale = 1.0f;
 
         MenuObject.SetActive(false);
@@ -30,6 +38,8 @@ public class InGameMenuButtons : MonoBehaviour
 
     public void Options()
     {
+        _sound.Play();
+
         if (SettingsOpened)
         {
             SettingsOpened = false;
@@ -44,6 +54,8 @@ public class InGameMenuButtons : MonoBehaviour
 
     public void ExitToMenu()
     {
+        _sound.Play();
+
         SceneManager.LoadScene(0);
 
         Time.timeScale = 1;

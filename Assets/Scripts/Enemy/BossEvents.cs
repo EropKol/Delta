@@ -8,7 +8,11 @@ public class BossEvents : MonoBehaviour
     public GameObject HealthUI;
     public Animator BossAnimator;
 
+    public GameObject Exit;
+
     private TrainGoOut _train;
+    private bool _notRepeat;
+    private bool _end;
 
     private void Start()
     {
@@ -19,10 +23,39 @@ public class BossEvents : MonoBehaviour
     {
         if(_train.OldTrainOut == true)
         {
-            BossAnimator.SetTrigger("Start");
+            StartCoroutine(Initialize());
 
-            Boss.enabled = true;
-            HealthUI.SetActive(true);
+            _train.OldTrainOut = false;
+
+            _end = true;
+        }
+
+        if(Boss.enabled == false && _notRepeat == false && _end == true)
+        {
+            _notRepeat = true;
+
+            StartCoroutine(Ending());
+        }
+    }
+
+    private IEnumerator Initialize()
+    {
+        BossAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(2f);
+
+        Boss.enabled = true;
+        Boss.GetComponent<BossAttack>().enabled = true;
+        HealthUI.SetActive(true);
+    }
+
+    private IEnumerator Ending()
+    {
+        while(Exit.transform.position.y <= 12)
+        {
+            Exit.transform.position += Vector3.up * 0.05f;
+
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }

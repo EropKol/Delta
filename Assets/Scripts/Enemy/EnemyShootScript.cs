@@ -14,6 +14,13 @@ public class EnemyShootScript : MonoBehaviour
     public int DamageType = 0;
     // 0 - Nothing, 1 - Fire, 2 - Ice, 3 - Earth, 4 - Air;
 
+    private AudioSource _audio;
+
+    private void Start()
+    {
+        _audio = BulletSource.GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (_timer > 0)
@@ -26,6 +33,7 @@ public class EnemyShootScript : MonoBehaviour
     {
         if (_timer <= 0)
         {
+            _audio.Play();
             var bullet = Instantiate(Bullet, BulletSource.position, direction);
 
             bullet.DamageType = DamageType;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZoneScript : MonoBehaviour
 {
     public float ExplosionDamage;
-    public float Size = 7.5f;
+    public float Size = 10f;
 
     public int Mode = 1;
 
@@ -25,7 +25,7 @@ public class ZoneScript : MonoBehaviour
 
         _renderer = GetComponent<Renderer>();
 
-        colliders = Physics.OverlapSphere(transform.position, Size/2);
+        colliders = Physics.OverlapSphere(transform.position, Size);
 
         foreach (Collider collider in colliders)
         {

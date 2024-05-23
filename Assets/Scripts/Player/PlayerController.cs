@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,12 +16,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveVector;
 
     private CharacterController _charCont;
+    private AudioSource _audio;
+    private bool _audioPlays;
 
     private void Start()
     {
         _charCont = GetComponent<CharacterController>();
 
         LockCursor();
+
+        _audio = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void PositionFixedUpdate()
     {
-        if (!Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) == false)
         {
             _charCont.Move(_moveVector * WalkingSpeed * 15 * SpeedModifier * Time.fixedDeltaTime);
         }
@@ -84,6 +89,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             _moveVector += transform.right;
+        }
+
+        if (_audioPlays == false && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            _audioPlays = true;
+            _audio.Play();
+        }
+
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) == false)
+        {
+            _audioPlays = false;
+            _audio.Pause();
         }
 
         _moveVector.Normalize();

@@ -23,14 +23,18 @@ public class FlyingEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.tag != "Boss")
+        {
+            Destroy(gameObject);
 
-        var enemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+            var enemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+            enemy.GetComponent<EnemyAI>().BossLevel = true;
 
-        var health = enemy.GetComponent<HealthScript>();
-        health.MaxHealthPoints *= Mathf.Pow(1.1f, _levelsCompleted);
-        health.DeathCost *= Mathf.Pow(1.1f, _levelsCompleted);
+            var health = enemy.GetComponent<HealthScript>();
+            health.MaxHealthPoints *= Mathf.Pow(1.1f, _levelsCompleted);
+            health.DeathCost *= Mathf.Pow(1.1f, _levelsCompleted);
 
-        enemy.GetComponent<EnemyShootScript>().DamageMultiplier *= Mathf.Pow(1.1f, _levelsCompleted);
+            enemy.GetComponent<EnemyShootScript>().DamageMultiplier *= Mathf.Pow(1.1f, _levelsCompleted);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class TrainGoOut : MonoBehaviour
     private float _speed = 0.5f;
 
     private PlayerController _player;
+    private EnemySpawner _spawner;
 
     private void Start()
     {
@@ -19,11 +20,17 @@ public class TrainGoOut : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        _spawner = FindObjectOfType<EnemySpawner>();
+
         if (other.gameObject == _player.gameObject)
         {
-            StartCoroutine(GoOut());
+            if (_spawner != null)
+            {
+                _spawner.OldTrainOut = true;
+            }
+            OldTrainOut = true;
 
-            FindObjectOfType<EnemySpawner>().OldTrainOut = true;
+            StartCoroutine(GoOut());
         }
     }
 

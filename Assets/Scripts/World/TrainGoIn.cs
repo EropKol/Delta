@@ -24,8 +24,6 @@ public class TrainGoIn : MonoBehaviour
             else
             {
                 IsMoving = false;
-
-                Train.transform.parent = null;
             }
 
             transform.position = new Vector3(0, 0, _distance);

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TrainToTunnel : MonoBehaviour
 {
     public ToNextLevel NextLevelScript;
+    public GameObject Train;
     public Transform World;
     public GameObject TrainGoOut1;
     public bool GoingOut2;
@@ -31,6 +32,8 @@ public class TrainToTunnel : MonoBehaviour
             if (GoingOut2 == false)
             {
                 StartCoroutine(GoOut());
+
+                Train.transform.parent = null;
 
                 GoingOut2 = true;
             }

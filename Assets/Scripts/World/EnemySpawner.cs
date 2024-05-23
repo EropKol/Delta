@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private float _timer = 30;
 
     private TrainGoIn _train;
+
     void Start()
     {
         LevelsCompleted = PlayerPrefs.GetFloat("LevelsCompleted", 0);
@@ -56,6 +57,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 _train.IsMoving = true;
             }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

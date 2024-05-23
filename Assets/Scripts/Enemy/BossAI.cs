@@ -9,6 +9,7 @@ public class BossAI : MonoBehaviour
     private HealthScript _health;
     private NavMeshAgent _navMeshAgent;
     private BossAttack _attackScript;
+    private AudioSource _audio;
 
     private void Start()
     {
@@ -17,6 +18,12 @@ public class BossAI : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         _health = GetComponent<HealthScript>();
+    
+        _attackScript = GetComponent<BossAttack>();
+
+        _audio = GetComponent<AudioSource>();
+
+        _audio.Play();
     }
 
     private void Update()
@@ -33,7 +40,8 @@ public class BossAI : MonoBehaviour
             _navMeshAgent.enabled = false;
             _health.enabled = false;
             _attackScript.enabled = false;
-            GetComponent<EnemyAI>().enabled = false;
+            GetComponent<BossAI>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
         }
     }
 

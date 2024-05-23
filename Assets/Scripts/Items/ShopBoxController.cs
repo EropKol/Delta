@@ -32,11 +32,15 @@ public class ShopBoxController : MonoBehaviour
 
     private PlayerController _player;
 
+    private AudioSource _audio;
+
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>();
 
         _moneyScript = _player.GetComponent<MoneyScript>();
+
+        _audio = GetComponent<AudioSource>();
 
         _outline = GetComponent<Outline>();
 
@@ -81,6 +85,8 @@ public class ShopBoxController : MonoBehaviour
                     _moneyScript.PlayersMoney -= ItemCost;
 
                     ItemCost *= 2;
+
+                    _audio.Play();
 
                     var FlyingItemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation);
                     FlyingItemObject.ChosenItem = _itemPrefab;

@@ -18,6 +18,8 @@ public class ToNextLevel : MonoBehaviour
     private bool _readyForBoss = false;
     private bool _inExitArea = false;
 
+    private AudioSource _audio;
+
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>().gameObject;
@@ -25,6 +27,8 @@ public class ToNextLevel : MonoBehaviour
         _nextLevelUI = FindObjectOfType<PointerNextLevel>().gameObject;
 
         _bossLevelUI = FindObjectOfType<PointerBossLevel>().transform.GetChild(0).gameObject;
+
+        _audio = GetComponent<AudioSource>();
 
         _nextLevelUI.SetActive(false);
 
@@ -63,6 +67,8 @@ public class ToNextLevel : MonoBehaviour
 
     public IEnumerator LoadScene(int NextScene, GameObject Activator)
     {
+        _audio.Play();
+
         Scene currentScene = SceneManager.GetActiveScene();
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextScene, LoadSceneMode.Additive);
@@ -76,6 +82,7 @@ public class ToNextLevel : MonoBehaviour
         SceneManager.MoveGameObjectToScene(Train, SceneManager.GetSceneByBuildIndex(NextScene));
         SceneManager.UnloadSceneAsync(currentScene);
         _nextLevelUI.SetActive(false);
+        _bossLevelUI.SetActive(false);
         if (NextScene == 3)
         {
             TurnOn();

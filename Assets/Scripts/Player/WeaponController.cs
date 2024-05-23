@@ -26,6 +26,13 @@ public class WeaponController : MonoBehaviour
     public bool IsDeathEffect = false;
     public float DeathEffectRadius = 7;
 
+    private AudioSource _audio;
+
+    private void Start()
+    {
+        _audio = ShotPoint.GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         ShotUpdate();
@@ -69,6 +76,8 @@ public class WeaponController : MonoBehaviour
 
     void SpawnBullet()
     {
+        _audio.Play();
+
         var BulletObject = Instantiate(BulletPrefab, ShotPoint.position, ShotPoint.rotation * Spread);
 
         BulletObject.Damage *= DamageModifier * 40 * Random.Range(0.8f, 1.2f);

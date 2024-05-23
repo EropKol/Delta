@@ -160,8 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3167b0ca01e1fdb46b3f069efb36f1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 0}
-  ChosenItem: {fileID: 0}
+  EnemyPrefab: {fileID: 1173155462516816500, guid: f75947106439b094eb6ae0b734233362, type: 3}
 --- !u!54 &1652156342994585790
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,4 +208,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.1, z: 0}

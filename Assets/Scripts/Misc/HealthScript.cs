@@ -175,7 +175,7 @@ public class HealthScript : MonoBehaviour
 
     void Destroy()
     {
-        if (gameObject.tag != "Player")
+        if (gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }

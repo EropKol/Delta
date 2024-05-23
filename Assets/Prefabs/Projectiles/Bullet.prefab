@@ -55,6 +55,8 @@ MonoBehaviour:
   ShotFlySpeed: 50
   TurnUp: 0
   IsDeathEffect: 0
+  DeathEffectRadius: 7
+  DamageType: 0
 --- !u!33 &4193327304157323825
 MeshFilter:
   m_ObjectHideFlags: 0
