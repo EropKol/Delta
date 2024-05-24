@@ -19,6 +19,8 @@ public class ZoneScript : MonoBehaviour
 
     private Collider[] colliders;
 
+    private AudioSource _audio;
+
     private void Start()
     {
         transform.localScale *= Size;
@@ -26,6 +28,8 @@ public class ZoneScript : MonoBehaviour
         _renderer = GetComponent<Renderer>();
 
         colliders = Physics.OverlapSphere(transform.position, Size);
+
+        _audio = GetComponent<AudioSource>();
 
         foreach (Collider collider in colliders)
         {
@@ -44,6 +48,11 @@ public class ZoneScript : MonoBehaviour
     {
         if (_active == true)
         {
+            if(Mode == 1)
+            {
+                _audio.Play();
+            }
+
             var health = other.GetComponent<HealthScript>();
             if (health != null)
             {

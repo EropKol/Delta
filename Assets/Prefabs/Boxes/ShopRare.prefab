@@ -202,7 +202,7 @@ MonoBehaviour:
   - {fileID: 4528225661700019470, guid: 18c4298662659eb4380cbfde2c15692c, type: 3}
   - {fileID: 4528225661700019470, guid: a259644c51799c5468e0b3c77fb85b39, type: 3}
   - {fileID: 4528225661700019470, guid: f93b1666707317a40aae156e5cbd61a9, type: 3}
-  ItemCost: 20
+  ItemCost: 80
   WhiteChance: 0
   GreenChance: 80
   RedChance: 20

@@ -6151,7 +6151,7 @@ Transform:
   - {fileID: 77040968207006278}
   - {fileID: 1186454321975124990}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &205816187651086133
 MonoBehaviour:
@@ -6298,7 +6298,7 @@ MonoBehaviour:
   - {fileID: 7002198358459416580, guid: cd6723c8f9095f14a9776e06fae51ea0, type: 3}
   - {fileID: 7002198358459416580, guid: cb6a3104cb35e7d408d39648e3d066d4, type: 3}
   - {fileID: 7002198358459416580, guid: f4ca20c86942d0243bd37cec3aa9004b, type: 3}
-  Bomb: {fileID: -2551304460051296597, guid: f9d7d1a266b7b2047819c4c89582a11d, type: 3}
+  Bomb: {fileID: 7145530443512390903, guid: f9d7d1a266b7b2047819c4c89582a11d, type: 3}
   Bullet: {fileID: -2551304460051296597, guid: 3b04ec668922fcd4e8dc341f4bdc6d33, type: 3}
   FlyingItemPrefab: {fileID: 2731222947140745399, guid: 5bc1c138e864724418224a54246c46bf, type: 3}
   Pool10:
