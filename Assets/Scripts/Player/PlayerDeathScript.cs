@@ -45,14 +45,14 @@ public class PlayerDeathScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
             if (Input.GetKeyDown(KeyCode.P))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
 
                 PlayerPrefs.SetFloat("LevelsCompleted", 0);
             }
@@ -64,7 +64,7 @@ public class PlayerDeathScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;

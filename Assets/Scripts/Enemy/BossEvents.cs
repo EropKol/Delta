@@ -15,12 +15,15 @@ public class BossEvents : MonoBehaviour
     private bool _end;
 
     private AudioSource _audio;
+    private HealthScript _health;
 
     private void Start()
     {
         _audio = GetComponent<AudioSource>();
 
         _train = FindObjectOfType<TrainGoOut>();
+
+        _health = Boss.GetComponent<HealthScript>();
     }
 
     private void Update()
@@ -34,7 +37,7 @@ public class BossEvents : MonoBehaviour
             _end = true;
         }
 
-        if(Boss.enabled == false && _notRepeat == false && _end == true)
+        if(_health.IsDead == true && _notRepeat == false && _end == true)
         {
             _notRepeat = true;
 
@@ -44,12 +47,11 @@ public class BossEvents : MonoBehaviour
 
     private IEnumerator Initialize()
     {
-        _audio.Play();
-
         BossAnimator.SetTrigger("Start");
 
         yield return new WaitForSeconds(2f);
 
+        _audio.Play();
         Boss.enabled = true;
         Boss.GetComponent<BossAttack>().enabled = true;
         HealthUI.SetActive(true);

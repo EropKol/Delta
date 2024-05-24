@@ -49,7 +49,7 @@ public class TrainToTunnel : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
 
-        StartCoroutine(NextLevelScript.LoadScene(3, gameObject));
+        StartCoroutine(NextLevelScript.LoadScene(4, gameObject));
 
         TrainGoOut1.SetActive(true);
     }

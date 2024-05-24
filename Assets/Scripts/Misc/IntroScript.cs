@@ -22,7 +22,7 @@ public class IntroScript : MonoBehaviour
 
     private void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private IEnumerator Intro()

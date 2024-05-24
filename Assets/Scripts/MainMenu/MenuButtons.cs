@@ -16,7 +16,7 @@ public class MenuButtons : MonoBehaviour
     {
         _sound.Play();
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
 
         PlayerPrefs.SetFloat("LevelsCompleted", 0);
     }

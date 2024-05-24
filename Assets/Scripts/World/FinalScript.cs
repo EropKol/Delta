@@ -29,6 +29,8 @@ public class FinalScript : MonoBehaviour
 
     private IEnumerator Credits()
     {
+        _player.GetComponent<AudioSource>().Pause();
+
         _audio.Play();
 
         _player.UIOff();
@@ -37,13 +39,13 @@ public class FinalScript : MonoBehaviour
 
         BGAnimator.SetTrigger("Start");
 
-        while(CreditsObject.anchoredPosition.y <= 1000)
+        while(CreditsObject.anchoredPosition.y <= 2000)
         {
-            CreditsObject.anchoredPosition += new Vector2(0, 1f);
+            CreditsObject.anchoredPosition += new Vector2(0, 2f);
 
             if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
-                CreditsObject.anchoredPosition += new Vector2(0, 4f);
+                CreditsObject.anchoredPosition += new Vector2(0, 8f);
             }
 
             yield return new WaitForSeconds(0.05f);

@@ -93,6 +93,11 @@ public class EnemyAI : MonoBehaviour
 
                 transform.LookAt(_player.transform);
 
+                if (_audio == null)
+                {
+                    _audio = GetComponent<AudioSource>();
+                }
+
                 _audio.Pause();
                 _audioPlays = false;
             }

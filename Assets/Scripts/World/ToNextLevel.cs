@@ -8,9 +8,9 @@ public class ToNextLevel : MonoBehaviour
     public GameObject Train;
     public List<ShopBoxController> Shops = new List<ShopBoxController>();
     public List<GameObject> ItemCosts = new List<GameObject>();
-    public int _nextScene = 2;
+    public int _nextScene = 3;
 
-    public int _bossScene = 4;
+    public int _bossScene = 5;
 
     private GameObject _player;
     private GameObject _nextLevelUI;
@@ -83,7 +83,7 @@ public class ToNextLevel : MonoBehaviour
         SceneManager.UnloadSceneAsync(currentScene);
         _nextLevelUI.SetActive(false);
         _bossLevelUI.SetActive(false);
-        if (NextScene == 3)
+        if (NextScene == 4)
         {
             TurnOn();
         }
