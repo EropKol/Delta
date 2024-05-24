@@ -7,6 +7,8 @@ public class FlyingItem : MonoBehaviour
     public ItemObjectScript ItemPrefab;
     public GameObject ChosenItem;
 
+    public float Force = 150;
+
     private Rigidbody _rigidBody;
     private Vector3 _startDirection;
 
@@ -14,7 +16,7 @@ public class FlyingItem : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
 
-        _startDirection = (transform.up * 3 + transform.forward) * 150;
+        _startDirection = (transform.up * 3 + transform.forward) * Force;
 
         _rigidBody.AddForce(_startDirection);
     }

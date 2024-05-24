@@ -10,9 +10,13 @@ public class FinalScript : MonoBehaviour
 
     private PlayerDeathScript _player;
 
+    private AudioSource _audio;
+
     private void Start()
     {
         _player = FindObjectOfType<PlayerDeathScript>();
+        
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,6 +29,8 @@ public class FinalScript : MonoBehaviour
 
     private IEnumerator Credits()
     {
+        _audio.Play();
+
         _player.UIOff();
 
         CreditsObject.gameObject.SetActive(true);
@@ -48,6 +54,8 @@ public class FinalScript : MonoBehaviour
         TextAnimator.SetTrigger("Fade");
 
         yield return new WaitForSeconds(1f);
+
+        _audio.Pause();
 
         _player.IsWin = true;
     }

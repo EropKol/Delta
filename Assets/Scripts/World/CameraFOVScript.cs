@@ -8,11 +8,14 @@ public class CameraFOVScript : MonoBehaviour
 
     void Start()
     {
-        _camera = GetComponent<Camera>();
+        _camera = GetComponent<Camera>(); 
+        FOVChange();
     }
 
     public void FOVChange()
     {
+        _camera = GetComponent<Camera>();
+
         _camera.fieldOfView = PlayerPrefs.GetFloat("FOV", 60);
     }
 

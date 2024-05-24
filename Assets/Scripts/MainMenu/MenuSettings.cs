@@ -16,14 +16,13 @@ public class MenuSettings : MonoBehaviour
     public Scrollbar _sensitivitySlider;
     public Scrollbar _fieldOfViewSlider;
 
-    private MusicPrefs _music;
+    private List<MusicPrefs> _music = new List<MusicPrefs>();
     private List<SoundPrefs> _sound = new List<SoundPrefs>();
     private CameraController _cameraController;
     private CameraFOVScript _camera;
 
     private void Start()
     {
-        _music = FindObjectOfType<MusicPrefs>().GetComponent<MusicPrefs>();
         _cameraController = FindObjectOfType<CameraController>();
         _camera = FindObjectOfType<CameraFOVScript>().GetComponent<CameraFOVScript>();
 
@@ -42,7 +41,12 @@ public class MenuSettings : MonoBehaviour
         MusicParameter = _musicSlider.value;
         PlayerPrefs.SetFloat("Music", MusicParameter);
 
-        _music.PrefsChange();
+        _music.AddRange(FindObjectsOfType<MusicPrefs>());
+        for (int i = 0; i < _music.Count; i++)
+        {
+            _music[i].PrefsChange();
+            _music.Remove(_music[i]);
+        }
     }
 
     public void Sound()
@@ -54,6 +58,7 @@ public class MenuSettings : MonoBehaviour
         for (int i = 0; i < _sound.Count; i++)
         {
             _sound[i].PrefsChange();
+            _sound.Remove(_sound[i]);
         }
     }
 

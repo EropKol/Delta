@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 8272223178428127470}
   - component: {fileID: 2545034154260664531}
   - component: {fileID: 7266033214581039549}
-  - component: {fileID: 3732285048404453307}
+  - component: {fileID: 4517802387028406781}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -182,7 +182,7 @@ Transform:
   - {fileID: 3596473836805173896}
   - {fileID: 3385174920443971917}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1063948602009049474
 MonoBehaviour:
@@ -394,7 +394,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3732285048404453307
+--- !u!114 &4517802387028406781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173155462516816500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d25ee75f2bbfad40ae7f8c226f70075, type: 3}
+  m_Script: {fileID: 11500000, guid: e9416ad6b92227d47a35f0eecf19d573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1691824082282973717

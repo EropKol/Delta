@@ -14,8 +14,12 @@ public class BossEvents : MonoBehaviour
     private bool _notRepeat;
     private bool _end;
 
+    private AudioSource _audio;
+
     private void Start()
     {
+        _audio = GetComponent<AudioSource>();
+
         _train = FindObjectOfType<TrainGoOut>();
     }
 
@@ -40,6 +44,8 @@ public class BossEvents : MonoBehaviour
 
     private IEnumerator Initialize()
     {
+        _audio.Play();
+
         BossAnimator.SetTrigger("Start");
 
         yield return new WaitForSeconds(2f);
@@ -51,9 +57,11 @@ public class BossEvents : MonoBehaviour
 
     private IEnumerator Ending()
     {
+        _audio.Pause();
+
         while(Exit.transform.position.y <= 12)
         {
-            Exit.transform.position += Vector3.up * 0.05f;
+            Exit.transform.position += Vector3.up * 0.01f;
 
             yield return new WaitForSeconds(0.01f);
         }

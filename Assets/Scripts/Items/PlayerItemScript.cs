@@ -120,9 +120,10 @@ public class PlayerItemScript : MonoBehaviour
             {
                 var CurrentAngle = Quaternion.Euler(0, i * 360 / (1 + ItemDropperCounter10), 0);
 
-                var itemObject = Instantiate(FlyingItemPrefab, transform.position, transform.rotation * CurrentAngle);
+                var itemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation * CurrentAngle);
 
                 itemObject.ChosenItem = Pool10[Random.Range(0, Pool10.Count)];
+                itemObject.Force = 50;
             }
 
             ItemIDList[10]--;
@@ -130,7 +131,6 @@ public class PlayerItemScript : MonoBehaviour
 
         if (ItemIDList[11] > 0) // 11 SpecialPresent (Red)
         {
-            ItemIDList[11]--;
             ItemDropperCounter11++;
             for (int i = 0; i < 1 + ItemDropperCounter11; i++)
             {
@@ -139,7 +139,9 @@ public class PlayerItemScript : MonoBehaviour
                 var itemObject = Instantiate(FlyingItemPrefab, transform.position + Vector3.up * 2f, transform.rotation * CurrentAngle);
 
                 itemObject.ChosenItem = Pool11[Random.Range(0, Pool11.Count)];
+                itemObject.Force = 50;
             }
+            ItemIDList[11]--;
         }
     }
 }

@@ -8,13 +8,13 @@ public class SoundPrefs : MonoBehaviour
 
     void Start()
     {
-        _audio = GetComponent<AudioSource>();
-
         PrefsChange();
     }
 
     public void PrefsChange()
     {
+        _audio = GetComponent<AudioSource>();
+
         _audio.volume = PlayerPrefs.GetFloat("Sound", 0.5f);
     }
 }
