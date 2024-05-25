@@ -9,6 +9,8 @@ public class ItemObjectScript : MonoBehaviour
     private ItemEffect _itemEffect;
     private AudioSource _audio;
 
+    private bool _pickable = true;
+
     private void Start()
     {
         _audio = GetComponent<AudioSource>();
@@ -20,7 +22,7 @@ public class ItemObjectScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && _pickable)
         {
             _itemEffect.Use();
 
@@ -33,6 +35,8 @@ public class ItemObjectScript : MonoBehaviour
     private IEnumerator Destroy()
     {
         _itemEffect.gameObject.SetActive(false);
+
+        _pickable = false;
 
         yield return new WaitForSeconds(1);
 

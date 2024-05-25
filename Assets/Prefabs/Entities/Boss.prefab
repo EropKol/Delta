@@ -182,7 +182,7 @@ Transform:
   - {fileID: 3596473836805173896}
   - {fileID: 3385174920443971917}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1063948602009049474
 MonoBehaviour:
@@ -209,7 +209,7 @@ MonoBehaviour:
   UIPoisonTimer: {fileID: 2841058234225899599}
   Animator: {fileID: 2403906645649305187}
   DeathCost: 2000
-  ZoneEffect: {fileID: 2540298408717256595, guid: 252e31c99857713439408c7d3db71a7e, type: 3}
+  ZoneEffect: {fileID: 2745267775195941882, guid: 252e31c99857713439408c7d3db71a7e, type: 3}
 --- !u!136 &6513747880292841748
 CapsuleCollider:
   m_ObjectHideFlags: 0

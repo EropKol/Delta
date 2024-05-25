@@ -6951,7 +6951,7 @@ MonoBehaviour:
   UIPoisonTimer: {fileID: 8734127640928558539}
   Animator: {fileID: 6918286477210602437}
   DeathCost: 0
-  ZoneEffect: {fileID: 2540298408717256595, guid: 252e31c99857713439408c7d3db71a7e, type: 3}
+  ZoneEffect: {fileID: 2745267775195941882, guid: 252e31c99857713439408c7d3db71a7e, type: 3}
 --- !u!114 &5745168157077071924
 MonoBehaviour:
   m_ObjectHideFlags: 0
